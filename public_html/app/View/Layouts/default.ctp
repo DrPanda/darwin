@@ -42,7 +42,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		</div>
 		<div id="content">
 			<?php if ($authUser) {
-				 echo $this->Html->link('logout',  '/users/logout', array('class' => 'button')); 
+				echo $this->Html->link('logout',  '/users/logout', array('class' => 'button'));
+				// if ($role==='Admin') {
+	 				echo $this->Html->link('edit users',  '/users', array('class' => 'button'));
+	 			// }
+ 				echo $this->Html->link('home',  '/students', array('class' => 'button'));
 			}
 			?>
 
