@@ -128,7 +128,7 @@ class UsersController extends AppController {
 	public function login() {
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
-	            return $this->redirect($this->Auth->redirect(array('action' => 'index')));
+	            return $this->redirect($this->Auth->redirect(array('controller' => 'Students', 'action' => 'index')));
 	        } else {
 	            $this->Session->setFlash(__("Nom d'user ou mot de passe invalide, réessayer"));
 	        }
