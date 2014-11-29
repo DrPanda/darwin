@@ -534,3 +534,305 @@ Stack Trace:
 #3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2014-11-28 11:56:09 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'darwin\'',
+  'enabled' => true,
+)
+Request URL: /users/login
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/lib/Cake/Model/Model.php(3539): ConnectionManager::getDataSource('default')
+#3 /var/www/html/lib/Cake/Model/Model.php(1136): Model->setDataSource('default')
+#4 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('users')
+#5 /var/www/html/lib/Cake/Model/Model.php(1369): Model->getDataSource()
+#6 /var/www/html/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/lib/Cake/View/Helper/FormHelper.php(468): FormHelper->_introspectModel('User', 'fields')
+#8 /var/www/html/app/View/Users/login.ctp(3): FormHelper->create('User')
+#9 /var/www/html/lib/Cake/View/View.php(948): include('/var/www/html/a...')
+#10 /var/www/html/lib/Cake/View/View.php(910): View->_evaluate('/var/www/html/a...', Array)
+#11 /var/www/html/lib/Cake/View/View.php(471): View->_render('/var/www/html/a...')
+#12 /var/www/html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#13 /var/www/html/lib/Cake/Routing/Dispatcher.php(198): Controller->render()
+#14 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#15 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2014-11-28 11:56:20 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'darwin\'',
+  'enabled' => true,
+)
+Request URL: /users/login
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/lib/Cake/Model/Model.php(3539): ConnectionManager::getDataSource('default')
+#3 /var/www/html/lib/Cake/Model/Model.php(1136): Model->setDataSource('default')
+#4 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('users')
+#5 /var/www/html/lib/Cake/Model/Model.php(1369): Model->getDataSource()
+#6 /var/www/html/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/lib/Cake/View/Helper/FormHelper.php(468): FormHelper->_introspectModel('User', 'fields')
+#8 /var/www/html/app/View/Users/login.ctp(3): FormHelper->create('User')
+#9 /var/www/html/lib/Cake/View/View.php(948): include('/var/www/html/a...')
+#10 /var/www/html/lib/Cake/View/View.php(910): View->_evaluate('/var/www/html/a...', Array)
+#11 /var/www/html/lib/Cake/View/View.php(471): View->_render('/var/www/html/a...')
+#12 /var/www/html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#13 /var/www/html/lib/Cake/Routing/Dispatcher.php(198): Controller->render()
+#14 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#15 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2014-11-28 11:56:24 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'darwin\'',
+  'enabled' => true,
+)
+Request URL: /users/login
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/lib/Cake/Model/Model.php(3539): ConnectionManager::getDataSource('default')
+#3 /var/www/html/lib/Cake/Model/Model.php(1136): Model->setDataSource('default')
+#4 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('users')
+#5 /var/www/html/lib/Cake/Model/Model.php(1369): Model->getDataSource()
+#6 /var/www/html/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/lib/Cake/View/Helper/FormHelper.php(468): FormHelper->_introspectModel('User', 'fields')
+#8 /var/www/html/app/View/Users/login.ctp(3): FormHelper->create('User')
+#9 /var/www/html/lib/Cake/View/View.php(948): include('/var/www/html/a...')
+#10 /var/www/html/lib/Cake/View/View.php(910): View->_evaluate('/var/www/html/a...', Array)
+#11 /var/www/html/lib/Cake/View/View.php(471): View->_render('/var/www/html/a...')
+#12 /var/www/html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#13 /var/www/html/lib/Cake/Routing/Dispatcher.php(198): Controller->render()
+#14 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#15 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2014-11-28 11:56:25 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'darwin\'',
+  'enabled' => true,
+)
+Request URL: /users/login
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/lib/Cake/Model/Model.php(3539): ConnectionManager::getDataSource('default')
+#3 /var/www/html/lib/Cake/Model/Model.php(1136): Model->setDataSource('default')
+#4 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('users')
+#5 /var/www/html/lib/Cake/Model/Model.php(1369): Model->getDataSource()
+#6 /var/www/html/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/lib/Cake/View/Helper/FormHelper.php(468): FormHelper->_introspectModel('User', 'fields')
+#8 /var/www/html/app/View/Users/login.ctp(3): FormHelper->create('User')
+#9 /var/www/html/lib/Cake/View/View.php(948): include('/var/www/html/a...')
+#10 /var/www/html/lib/Cake/View/View.php(910): View->_evaluate('/var/www/html/a...', Array)
+#11 /var/www/html/lib/Cake/View/View.php(471): View->_render('/var/www/html/a...')
+#12 /var/www/html/lib/Cake/Controller/Controller.php(954): View->render(NULL, NULL)
+#13 /var/www/html/lib/Cake/Routing/Dispatcher.php(198): Controller->render()
+#14 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#15 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2014-11-28 13:22:14 Error: [MissingActionException] Action UnitSessionsController::post() could not be found.
+Exception Attributes: array (
+  'controller' => 'UnitSessionsController',
+  'action' => 'post',
+)
+Request URL: /unit_sessions/post
+Stack Trace:
+#0 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#2 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-28 13:22:24 Error: [MissingControllerException] Controller class PostController could not be found.
+Exception Attributes: array (
+  'class' => 'PostController',
+  'plugin' => NULL,
+)
+Request URL: /post
+Stack Trace:
+#0 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-28 13:23:02 Error: [MissingActionException] Action UnitSessionsController::import() could not be found.
+Exception Attributes: array (
+  'controller' => 'UnitSessionsController',
+  'action' => 'import',
+)
+Request URL: /unit_sessions/import
+Stack Trace:
+#0 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#2 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-28 13:24:07 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions/import
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(1369): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(1553): Model->schema()
+#3 /var/www/html/app/Model/Post.php(52): Model->create()
+#4 /var/www/html/app/Controller/UnitSessionsController.php(108): Post->import('posts.csv')
+#5 [internal function]: UnitSessionsController->import()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 13:25:00 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions/
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 13:25:04 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 13:25:14 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 13:46:55 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 14:23:12 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 14:24:00 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 14:27:06 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-28 15:03:46 Error: [MissingTableException] Table posts for model Post was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'posts',
+  'class' => 'Post',
+  'ds' => 'default',
+)
+Request URL: /unit_sessions
+Stack Trace:
+#0 /var/www/html/lib/Cake/Model/Model.php(3566): Model->setSource('posts')
+#1 /var/www/html/lib/Cake/Model/Model.php(2947): Model->getDataSource()
+#2 /var/www/html/lib/Cake/Model/Model.php(2919): Model->_readDataSource('all', Array)
+#3 /var/www/html/lib/Cake/Controller/Component/PaginatorComponent.php(196): Model->find('all', Array)
+#4 /var/www/html/app/Controller/UnitSessionsController.php(26): PaginatorComponent->paginate()
+#5 [internal function]: UnitSessionsController->index()
+#6 /var/www/html/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UnitSessionsController), Array)
+#7 /var/www/html/lib/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/html/lib/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(UnitSessionsController), Object(CakeRequest))
+#9 /var/www/html/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}

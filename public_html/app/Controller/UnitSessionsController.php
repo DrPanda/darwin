@@ -22,7 +22,7 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->UnitSession->recursive = 0;
+		// $this->UnitSession->recursive = 0;
 		$this->set('unitSessions', $this->Paginator->paginate());
 	}
 
@@ -101,5 +101,12 @@ class UnitSessionsController extends AppController {
 			$this->Session->setFlash(__('The unit session could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	var $name = 'Posts';
+	var $scaffold;
+	public	function import() {
+		$messages = $this->Post->import('posts.csv');
+            $this->set('messages', $messages);
 	}
 }

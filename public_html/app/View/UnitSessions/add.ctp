@@ -5,6 +5,8 @@
 	<?php
 		echo $this->Form->input('date_time');
 		echo $this->Form->input('name');
+		//echo $this->Form->create('Post', array('type' => 'file'));
+		echo $this->Form->input('file_csv', array('type' => 'file'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

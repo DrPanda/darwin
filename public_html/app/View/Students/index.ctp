@@ -49,7 +49,6 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Student'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Unit Sessions'), array('controller' => 'unit_sessions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Unit Session'), array('controller' => 'unit_sessions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Student Exercices'), array('controller' => 'student_exercices', 'action' => 'index')); ?> </li>
