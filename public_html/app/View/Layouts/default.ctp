@@ -54,10 +54,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				    <span class="caret"></span>
 				  </button>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+<<<<<<< HEAD
 					  <li role="presentation"><?php echo $this->Html->link('home',  '/students', array('role' => 'menuitem', 'tabindex' => "-1")); ?></li>
 					  <?php if ($authUser["role"] == "admin") { ?>
 					  	<li role="presentation"><?php echo $this->Html->link('edit users',  '/users', array('role' => 'menuitem', 'tabindex' => "-1")); ?></li>
 					  <li role="presentation"><?php echo $this->Html->link(__('New Unit Session'), array('action' => 'add')); ?></li>
+=======
+					  <li role="presentation"><?php echo $this->Html->link(__('Session'), '/unitSessions', array('action' => 'index')); ?>
+					  <?php if ($authUser["role"] == "admin") { ?>
+					  	<li role="presentation"><?php echo $this->Html->link('edit users',  '/users', array('role' => 'menuitem', 'tabindex' => "-1")); ?></li></li>
+>>>>>>> master
 					  <?php } ?>
 					  <li role="presentation"><?php echo $this->Html->link('logout',  '/users/logout', array('role' => 'menuitem', 'tabindex' => "-1")); ?></li>
 				  	</ul>

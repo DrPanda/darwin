@@ -47,6 +47,9 @@ class StudentsController extends AppController {
  * @return void
  */
 	public function add() {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if ($this->request->is('post')) {
 			$this->Student->create();
 			if ($this->Student->save($this->request->data)) {
@@ -66,6 +69,9 @@ class StudentsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if (!$this->Student->exists($id)) {
 			throw new NotFoundException(__('Invalid student'));
 		}
@@ -90,6 +96,9 @@ class StudentsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		$this->Student->id = $id;
 		if (!$this->Student->exists()) {
 			throw new NotFoundException(__('Invalid student'));

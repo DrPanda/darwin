@@ -1,43 +1,55 @@
-<div class="students view">
+<div class="col-lg-12">
 <h2><?php echo __('Student'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Session Id'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['session_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Picture'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['picture']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('First Name'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['first_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Last Name'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['last_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Comment'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['comment']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Comment User'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['comment_user']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1">
+	    <a href="#" class="thumbnail">
+	      <img data-src="holder.js/100%x180" alt="...">
+	    </a>
+	  </div>
+	<div class="col-xs-6 col-sm-9 col-md-9 col-lg-11">
+		<dl>
+			<?php if ($authUser["role"] == "admin") { ?>
+			<dt><?php echo __('Id'); ?></dt>
+			<dd>
+				<?php echo h($student['Student']['id']); ?>
+				&nbsp;
+			</dd>
+			<?php } ?>
+			<dt><?php echo __('Session Id'); ?></dt>
+			<dd>
+				<?php echo h($student['Student']['session_id']); ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __('Picture'); ?></dt>
+			<dd>
+				<?php echo h($student['Student']['picture']); ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __('First Name'); ?></dt>
+			<dd>
+				<?php echo h($student['Student']['first_name']); ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __('Last Name'); ?></dt>
+			<dd>
+				<?php echo h($student['Student']['last_name']); ?>
+				&nbsp;
+			</dd>
+			<?php if ($authUser["role"] == "admin") { ?>
+			<dt><?php echo __('Comment'); ?></dt>
+			<dd>
+				<?php echo h($student['Student']['comment']); ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __('Comment User'); ?></dt>
+			<dd>
+				<?php echo h($student['Student']['comment_user']); ?>
+				&nbsp;
+			</dd>
+			<?php } ?>
+		</dl>
+	</div>
 </div>
+<?php if ($authUser["role"] == "admin") { ?>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -112,3 +124,4 @@
 		</ul>
 	</div>
 </div>
+<?php } ?>

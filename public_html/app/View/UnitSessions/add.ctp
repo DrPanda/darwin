@@ -1,10 +1,13 @@
 <div class="unitSessions form">
-<?php echo $this->Form->create('UnitSession'); ?>
+<?php echo $this->Form->create('UnitSession', array('type' => 'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Unit Session'); ?></legend>
 	<?php
 		echo $this->Form->input('date_time');
 		echo $this->Form->input('name');
+	?>
+	<?php
+		echo $this->Form->input('csv_file',  array('label' => 'choose your csv file', 'type' => 'file'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

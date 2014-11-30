@@ -35,7 +35,7 @@ class AppController extends Controller {
 	public $components = array(
         'Session',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'students', 'action' => 'index'),
+            'loginRedirect' => array('controller' => 'UnitSessions', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
         )
     );
@@ -51,7 +51,8 @@ class AppController extends Controller {
 	}
 
     public function beforeFilter() {
-    	$this->set('authUser', $this->Auth->user());
+        $this->set('authUser', $this->Auth->user());
         // $this->Auth->allow('index', 'view');
+        // $this->Auth->deny('edit', 'delete');
     }
 }

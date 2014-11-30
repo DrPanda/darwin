@@ -1,3 +1,4 @@
+<?php if ($authUser["role"] == "admin") { ?>
 <div class="unitSessions view">
 <h2><?php echo __('Unit Session'); ?></h2>
 	<dl>
@@ -29,42 +30,58 @@
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php } ?>
 <div class="related">
 	<h3><?php echo __('Related Students'); ?></h3>
 	<?php if (!empty($unitSession['Student'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Session Id'); ?></th>
+		<?php if ($authUser["role"] == "admin") { ?>
+			<th><?php echo __('Id'); ?></th>
+		<?php } ?>
 		<th><?php echo __('Picture'); ?></th>
+		<th><?php echo __('Session Id'); ?></th>
 		<th><?php echo __('First Name'); ?></th>
 		<th><?php echo __('Last Name'); ?></th>
+		<?php if ($authUser["role"] == "admin") { ?>
 		<th><?php echo __('Comment'); ?></th>
 		<th><?php echo __('Comment User'); ?></th>
+		<?php } ?>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($unitSession['Student'] as $student): ?>
 		<tr>
-			<td><?php echo $student['id']; ?></td>
+			<?php if ($authUser["role"] == "admin") { ?>
+				<td><?php echo $student['id']; ?></td>
+			<?php } ?>
+			<td>
+				<a href="#" class="thumbnail">
+			      <?php echo $this->Html->image($student['picture'].".jpg", array('alt' => 'CakePHP')); ?>
+			    </a>
+			</td>
 			<td><?php echo $student['session_id']; ?></td>
-			<td><?php echo $student['picture']; ?></td>
 			<td><?php echo $student['first_name']; ?></td>
 			<td><?php echo $student['last_name']; ?></td>
-			<td><?php echo $student['comment']; ?></td>
-			<td><?php echo $student['comment_user']; ?></td>
+			<?php if ($authUser["role"] == "admin") { ?>
+				<td><?php echo $student['comment']; ?></td>
+				<td><?php echo $student['comment_user']; ?></td>
+			<?php } ?>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'students', 'action' => 'view', $student['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'students', 'action' => 'edit', $student['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'students', 'action' => 'delete', $student['id']), array(), __('Are you sure you want to delete # %s?', $student['id'])); ?>
+				<?php if ($authUser["role"] == "admin") { ?>
+					<?php echo $this->Html->link(__('Edit'), array('controller' => 'students', 'action' => 'edit', $student['id'])); ?>
+					<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'students', 'action' => 'delete', $student['id']), array(), __('Are you sure you want to delete # %s?', $student['id'])); ?>
+				<?php } ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
+	<?php if ($authUser["role"] == "admin") { ?>
+		<div class="actions">
+			<ul>
+				<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
+			</ul>
+		</div>
+	<?php } ?>
 </div>

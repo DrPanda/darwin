@@ -27,6 +27,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function index() {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
 	}
@@ -39,6 +42,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -52,6 +58,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
@@ -71,6 +80,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -113,6 +125,9 @@ class UsersController extends AppController {
  */
 	public function delete($id = null) {
 		$this->User->id = $id;
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -128,7 +143,7 @@ class UsersController extends AppController {
 	public function login() {
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
-	            return $this->redirect($this->Auth->redirect(array('controller' => 'Students', 'action' => 'index')));
+	            return $this->redirect($this->Auth->redirect(array('controller' => 'UnitSessions', 'action' => 'index')));
 	        } else {
 	            $this->Session->setFlash(__("Nom d'user ou mot de passe invalide, réessayer"));
 	        }

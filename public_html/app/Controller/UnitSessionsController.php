@@ -47,16 +47,72 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function add() {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if ($this->request->is('post')) {
 			$this->UnitSession->create();
 			if ($this->UnitSession->save($this->request->data)) {
-				$this->Session->setFlash(__('The unit session has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The unit session could not be saved. Please, try again.'));
+				if ($this->request->data['UnitSession']['csv_file']['size'] > 0)
+				{
+					$extension = strtolower(pathinfo($this->request->data['UnitSession']['csv_file']['name'], PATHINFO_EXTENSION));
+					$filename = $this->request->data['UnitSession']['csv_file']['tmp_name'];
+					if(
+						!empty($filename) &&
+						in_array($extension, array('csv'))
+						){
+						$file = fopen($filename, 'r');
+						$csv_line = fgetcsv($file, 10000, "\r");
+						$tmp = false;
+						foreach ($csv_line as $value) {
+							if ($tmp === true && isset($csv_field[20]) && isset($csv_field[19]) && isset($csv_field[31]))
+							{
+								$csv_field = explode(";", $value);
+								$data = array(
+									'Student' => array(
+										'session_id' => $this->UnitSession->id,
+										'id' => $csv_field[20],
+										'first_name' => $csv_field[19],
+										'last_name' => $csv_field[31]
+									)
+								);
+								$this->loadModel('Student');
+								$this->Student->create();
+								$this->Student->save($data);
+							}
+							$tmp = true;
+						}
+						fclose($file);
+
+						// }
+						move_uploaded_file(
+							$this->request->data['UnitSession']['csv_file']['tmp_name'],
+							WWW_ROOT . DS . 'files' . DS . 'csvs' . DS . $this->UnitSession->id . '.' . $extension);
+						// $this->UnitSession->saveField('files', $extension);
+					$this->Session->setFlash(__('The unit session has been saved.'));
+					// return $this->redirect(array('action' => 'index'));
+					}
+				}
+
 			}
+
+			// 	$extension = strtolower(pathinfo($this->request->data['UnitSession']['csv_file']['name'], PATHINFO_EXTENSION));
+			// 	if(
+			// 		!empty($this->request->data['UnitSession']['label']['tmp_name']) &&
+			// 		in_array($extension, array('csv'))
+			// 		){
+			// 		move_uploaded_file(
+			// 			$this->request->data['UnitSession']['csv_file']['tmp_name'],
+			// 			FILES . 'UnitSession' . DS . $this->UnitSession->id . '.' . $extension);
+			// 		$this->UnitSession->saveField('files', $extension);
+			// 	$this->Session->setFlash(__('The unit session has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			// } else {
+				// $this->Session->setFlash(__('The unit session could not be saved. Please, try again.'));
+			// }
 		}
 	}
+
 
 /**
  * edit method
@@ -66,12 +122,62 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
+		// var_dump($this->request->data);
+		// die();
 		if (!$this->UnitSession->exists($id)) {
 			throw new NotFoundException(__('Invalid unit session'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->UnitSession->save($this->request->data)) {
-				$this->Session->setFlash(__('The unit session has been saved.'));
+				if ($this->request->data['UnitSession']['csv_file']['size'] > 0)
+				{
+					$extension = strtolower(pathinfo($this->request->data['UnitSession']['csv_file']['name'], PATHINFO_EXTENSION));
+					$filename = $this->request->data['UnitSession']['csv_file']['tmp_name'];
+					// echo $extension;
+					// var_dump(in_array($extension, array('csv')));
+					// die();
+					if(!empty($filename) && (in_array($extension, array('csv')) === TRUE) )
+					{
+						$file = fopen($filename, 'r');
+						$csv_line = fgetcsv($file, 0, "\r");
+						$tmp = false;
+						foreach ($csv_line as $value) {
+							if ($tmp === true)
+							{
+								$csv_field = explode(";", $value);
+								// var_dump($csv_field);
+								$data = array(
+									'Student' => array(
+										'session_id' => $this->UnitSession->id,
+										'id' => $csv_field[20],
+										'first_name' => $csv_field[19],
+										'last_name' => $csv_field[31]
+									)
+								);
+								$this->loadModel('Student');
+								$this->Student->create();
+								$this->Student->save($data);
+							}
+							$tmp = true;
+						}
+						fclose($file);
+
+						// }
+						move_uploaded_file(
+							$this->request->data['UnitSession']['csv_file']['tmp_name'],
+							WWW_ROOT . DS . 'files' . DS . 'csvs' . DS . $this->UnitSession->id . '.' . $extension);
+						// $this->UnitSession->saveField('files', $extension);
+						$this->Session->setFlash(__('The student has been saved.'));
+						// return $this->redirect(array('action' => 'index'));
+					} else {
+						$this->Session->setFlash(__('The file can\'t be uploaded.'));
+						return;
+					}
+				}
+				$this->Session->setFlash(__('The unit session has been edited.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The unit session could not be saved. Please, try again.'));
@@ -90,6 +196,9 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		$this->UnitSession->id = $id;
 		if (!$this->UnitSession->exists()) {
 			throw new NotFoundException(__('Invalid unit session'));
