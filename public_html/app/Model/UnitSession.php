@@ -15,7 +15,18 @@ class UnitSession extends AppModel {
 	public $displayField = 'name';
 
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+	public $validate = array(
+		'name' => array(
+			'isUnique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'Duplicate name',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
 
 /**
  * hasMany associations
