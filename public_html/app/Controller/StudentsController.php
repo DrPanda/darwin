@@ -38,7 +38,9 @@ class StudentsController extends AppController {
 			throw new NotFoundException(__('Invalid student'));
 		}
 		$options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
-		$this->set('student', $this->Student->find('first', $options));
+		$student = $this->Student->find('first', $options);
+		$this->set('student', $student);
+		// $this->set('sessionz', $this->Student->find('first', $options));
 	}
 
 /**

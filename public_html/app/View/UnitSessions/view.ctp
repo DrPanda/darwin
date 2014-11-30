@@ -32,7 +32,11 @@
 </div>
 <?php } ?>
 <div class="related">
-	<h3><?php echo __('Related Students'); ?></h3>
+	<?php if ($authUser["role"] == "admin") { ?>
+			<h3><?php echo __('Related Students'); ?></h3>
+		<?php } else { ?>
+			<h3><?php echo h($unitSession['UnitSession']['name']); ?></h3>
+		<?php } ?>
 	<?php if (!empty($unitSession['Student'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
