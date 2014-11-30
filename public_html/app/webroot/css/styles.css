@@ -1,0 +1,10 @@
+#header .dropdown-menu {
+	right: 0;
+	left: inherit;
+}
+.dropdown {
+	float: right;
+}
+#header a, #footer a {
+	color: #000;
+}
