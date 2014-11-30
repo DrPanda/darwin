@@ -534,3 +534,63 @@ Stack Trace:
 #3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2014-11-29 18:49:03 Error: Fatal Error (4): syntax error, unexpected '?>' in [/var/www/html/app/View/UnitSessions/add.ctp, line 9]
+2014-11-29 18:49:03 Error: [FatalErrorException] syntax error, unexpected '?>'
+Request URL: /unit_sessions/add
+Stack Trace:
+#0 /var/www/html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/html/a...', 9)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/html/a...', 9, Array)
+#2 /var/www/html/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/html/a...', 9, Array)
+#3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-29 18:49:23 Error: Fatal Error (4): syntax error, unexpected ';' in [/var/www/html/app/View/UnitSessions/add.ctp, line 8]
+2014-11-29 18:49:23 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /unit_sessions/add
+Stack Trace:
+#0 /var/www/html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/html/a...', 8)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/html/a...', 8, Array)
+#2 /var/www/html/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/html/a...', 8, Array)
+#3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-29 18:49:40 Error: Fatal Error (1): Call to a member function input() on a non-object in [/var/www/html/app/View/UnitSessions/add.ctp, line 8]
+2014-11-29 18:49:40 Error: [FatalErrorException] Call to a member function input() on a non-object
+Request URL: /unit_sessions/add
+Stack Trace:
+#0 /var/www/html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/html/a...', 8)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/html/a...', 8, Array)
+#2 /var/www/html/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/html/a...', 8, Array)
+#3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-29 19:29:50 Error: Fatal Error (1): Call to undefined function debut() in [/var/www/html/app/Controller/UnitSessionsController.php, line 52]
+2014-11-29 19:29:50 Error: [FatalErrorException] Call to undefined function debut()
+Request URL: /unit_sessions/add
+Stack Trace:
+#0 /var/www/html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/var/www/html/a...', 52)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/var/www/html/a...', 52, Array)
+#2 /var/www/html/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/var/www/html/a...', 52, Array)
+#3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-29 19:35:20 Error: Fatal Error (4): syntax error, unexpected ';' in [/var/www/html/app/Controller/UnitSessionsController.php, line 52]
+2014-11-29 19:35:20 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /unit_sessions/add
+Stack Trace:
+#0 /var/www/html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/html/a...', 52)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/html/a...', 52, Array)
+#2 /var/www/html/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/html/a...', 52, Array)
+#3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-29 19:40:02 Error: Fatal Error (4): syntax error, unexpected 'public' (T_PUBLIC) in [/var/www/html/app/Controller/UnitSessionsController.php, line 71]
+2014-11-29 19:40:02 Error: [FatalErrorException] syntax error, unexpected 'public' (T_PUBLIC)
+Request URL: /unit_sessions/add
+Stack Trace:
+#0 /var/www/html/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/html/a...', 71)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/html/a...', 71, Array)
+#2 /var/www/html/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/html/a...', 71, Array)
+#3 /var/www/html/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
