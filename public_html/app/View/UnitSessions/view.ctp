@@ -1,6 +1,6 @@
 <?php if ($authUser["role"] == "admin") { ?>
 <div class="unitSessions view">
-<h2><?php echo __('Unit Session'); ?></h2>
+<h2><?php echo h($unitSession['UnitSession']['name']); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -59,7 +59,7 @@
 			      <?php echo $this->Html->image($student['picture'].".jpg", array('alt' => 'CakePHP')); ?>
 			    </a>
 			</td>
-			<td><?php echo $student['session_id']; ?></td>
+			<td><?php echo h($unitSession['UnitSession']['name']); ?></td>
 			<td><?php echo $student['first_name']; ?></td>
 			<td><?php echo $student['last_name']; ?></td>
 			<?php if ($authUser["role"] == "admin") { ?>

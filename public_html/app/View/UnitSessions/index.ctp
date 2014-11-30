@@ -1,9 +1,5 @@
 <div class="col-lg-12">
-<<<<<<< HEAD
-	<h2><?php echo __('Unit Sessions'); ?></h2>
-=======
 	<h2><?php echo __('Sessions'); ?></h2>
->>>>>>> master
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
