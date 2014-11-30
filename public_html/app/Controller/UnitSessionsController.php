@@ -130,10 +130,11 @@ class UnitSessionsController extends AppController {
 				{
 					$extension = strtolower(pathinfo($this->request->data['UnitSession']['csv_file']['name'], PATHINFO_EXTENSION));
 					$filename = $this->request->data['UnitSession']['csv_file']['tmp_name'];
-					if(
-						!empty($filename) &&
-						in_array($extension, array('csv'))
-						){
+					// echo $extension;
+					// var_dump(in_array($extension, array('csv')));
+					// die();
+					if(!empty($filename) && (in_array($extension, array('csv')) === TRUE) )
+					{
 						$file = fopen($filename, 'r');
 						$csv_line = fgetcsv($file, 0, "\r");
 						$tmp = false;
@@ -163,11 +164,14 @@ class UnitSessionsController extends AppController {
 							$this->request->data['UnitSession']['csv_file']['tmp_name'],
 							WWW_ROOT . DS . 'files' . DS . 'csvs' . DS . $this->UnitSession->id . '.' . $extension);
 						// $this->UnitSession->saveField('files', $extension);
-					$this->Session->setFlash(__('The unit session has been saved.'));
-					// return $this->redirect(array('action' => 'index'));
+						$this->Session->setFlash(__('The student has been saved.'));
+						// return $this->redirect(array('action' => 'index'));
+					} else {
+						$this->Session->setFlash(__('The file can\'t be uploaded.'));
+						return;
 					}
 				}
-				$this->Session->setFlash(__('The unit session has been saved.'));
+				$this->Session->setFlash(__('The unit session has been edited.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The unit session could not be saved. Please, try again.'));
