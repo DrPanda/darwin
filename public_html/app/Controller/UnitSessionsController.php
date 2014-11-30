@@ -122,14 +122,11 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-<<<<<<< HEAD
 		if ($this->Auth->user()['role'] == "assets") {
 	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
 	    }
-=======
 		// var_dump($this->request->data);
 		// die();
->>>>>>> 1dda7698c8c404364ddc2f476eb4d74f258f1f61
 		if (!$this->UnitSession->exists($id)) {
 			throw new NotFoundException(__('Invalid unit session'));
 		}
