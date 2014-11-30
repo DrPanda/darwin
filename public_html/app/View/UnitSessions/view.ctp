@@ -27,12 +27,10 @@
 		<li><?php echo $this->Html->link(__('List Unit Sessions'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Unit Session'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <?php } ?>
 <div class="related">
-	<h3><?php echo __('Related Students'); ?></h3>
 	<?php if (!empty($unitSession['Student'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -77,11 +75,4 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-	<?php if ($authUser["role"] == "admin") { ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
-			</ul>
-		</div>
-	<?php } ?>
 </div>

@@ -18,6 +18,5 @@
 
 		<li><?php echo $this->Html->link(__('List Unit Sessions'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
