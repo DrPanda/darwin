@@ -47,8 +47,13 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function add() {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if ($this->request->is('post')) {
 			$this->UnitSession->create();
+			// debug($this->request->data); die();
+			
 			if ($this->UnitSession->save($this->request->data)) {
 				$this->Session->setFlash(__('The unit session has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -66,6 +71,9 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		if (!$this->UnitSession->exists($id)) {
 			throw new NotFoundException(__('Invalid unit session'));
 		}
@@ -90,6 +98,9 @@ class UnitSessionsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		if ($this->Auth->user()['role'] == "assets") {
+	        $this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+	    }
 		$this->UnitSession->id = $id;
 		if (!$this->UnitSession->exists()) {
 			throw new NotFoundException(__('Invalid unit session'));
