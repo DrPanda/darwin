@@ -16,12 +16,7 @@
 			<?php } ?>
 			<dt><?php echo __('Session Id'); ?></dt>
 			<dd>
-				<?php echo h($student['Student']['session_id']); ?>
-				&nbsp;
-			</dd>
-			<dt><?php echo __('Picture'); ?></dt>
-			<dd>
-				<?php echo h($student['Student']['picture']); ?>
+				<?php echo $session; ?>
 				&nbsp;
 			</dd>
 			<dt><?php echo __('First Name'); ?></dt>
@@ -53,13 +48,8 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Student'), array('action' => 'edit', $student['Student']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Student'), array('action' => 'delete', $student['Student']['id']), array(), __('Are you sure you want to delete # %s?', $student['Student']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Students'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Student'), array('action' => 'edit', $student['Student']['id'])); ?></li>
 		<li><?php echo $this->Html->link(__('New Student'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Unit Sessions'), array('controller' => 'unit_sessions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Unit Session'), array('controller' => 'unit_sessions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Student Exercices'), array('controller' => 'student_exercices', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student Exercice'), array('controller' => 'student_exercices', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
@@ -125,3 +115,36 @@
 	</div>
 </div>
 <?php } ?>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Add exercice
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add exercice</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo $this->Form->create('StudentExercice', array('action' => 'add')); ?>
+		<fieldset>
+			<?php
+				echo $this->Form->hidden('student_id', array('value' => $student['Student']['id']));
+				echo $this->Form->input('exercice_id', $exercices);
+				// echo $this->Form->hidden('date');
+				echo $this->Form->hidden('user_id', array('value' => $authUser["id"]));
+				echo $this->Form->select('is_valid', array(true => 'True', false => 'False'));
+			?>
+			</fieldset>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <?php echo $this->Form->end(__('Submit')); ?>
+      </div>
+    </div>
+  </div>
+</div>

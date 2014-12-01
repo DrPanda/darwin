@@ -38,7 +38,13 @@ class StudentsController extends AppController {
 			throw new NotFoundException(__('Invalid student'));
 		}
 		$options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
-		$this->set('student', $this->Student->find('first', $options));
+		$student = $this->Student->find('first', $options);
+		// var_dump($student);
+		$this->set('student', $student);
+		$this->loadModel('UnitSessions');
+		$this->loadModel('Exercices');
+		$this->set('session', $this->UnitSessions->findAllById($student['Student']['session_id'])[0]['UnitSessions']['name']);
+		$this->set('exercices', $this->Exercices->find('list', array('fields' => array('Exercices.id', 'Exercices.subject'))));
 	}
 
 /**

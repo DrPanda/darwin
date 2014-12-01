@@ -22,9 +22,9 @@
 		<td>
 			<?php echo $this->Html->link($studentExercice['Exercice']['content'], array('controller' => 'exercices', 'action' => 'view', $studentExercice['Exercice']['id'])); ?>
 		</td>
-		<td><?php echo h($studentExercice['StudentExercice']['date']); ?>&nbsp;</td>
+		<td><?php echo h($studentExercice['StudentExercice']['updated']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($studentExercice['User']['login'], array('controller' => 'users', 'action' => 'view', $studentExercice['User']['id'])); ?>
+			<?php echo $this->Html->link($studentExercice['User']['username'], array('controller' => 'users', 'action' => 'view', $studentExercice['User']['id'])); ?>
 		</td>
 		<td><?php echo h($studentExercice['StudentExercice']['comment']); ?>&nbsp;</td>
 		<td class="actions">
