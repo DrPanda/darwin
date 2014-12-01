@@ -37,7 +37,7 @@ class ChatsController extends AppController {
 		if (!$this->Chat->exists($id)) {
 			throw new NotFoundException(__('Invalid chat'));
 		}
-		$options = array('conditions' => array('Chat.' . $this->Chat->primaryKey => $id));
+		$options = array('conditions' => array('Chats.' . $this->Chat->primaryKey => $id));
 		$this->set('chat', $this->Chat->find('first', $options));
 	}
 
@@ -51,7 +51,7 @@ class ChatsController extends AppController {
 			$this->Chat->create();
 			if ($this->Chat->save($this->request->data)) {
 				$this->Session->setFlash(__('The chat has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->redirect($this->referer());
 			} else {
 				$this->Session->setFlash(__('The chat could not be saved. Please, try again.'));
 			}
@@ -69,8 +69,8 @@ class ChatsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Chat->exists($id)) {
-			throw new NotFoundException(__('Invalid chat'));
+		if (!$this->Chats->exists($id)) {
+			throw new NotFoundException(__('Invalid chats'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Chat->save($this->request->data)) {
@@ -80,7 +80,7 @@ class ChatsController extends AppController {
 				$this->Session->setFlash(__('The chat could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Chat.' . $this->Chat->primaryKey => $id));
+			$options = array('conditions' => array('Chats.' . $this->Chat->primaryKey => $id));
 			$this->request->data = $this->Chat->find('first', $options);
 		}
 		$students = $this->Chat->Student->find('list');

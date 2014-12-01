@@ -39,12 +39,14 @@ class StudentsController extends AppController {
 		}
 		$options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
 		$student = $this->Student->find('first', $options);
-		// var_dump($student);
 		$this->set('student', $student);
 		$this->loadModel('UnitSessions');
 		$this->loadModel('Exercices');
+		$this->loadModel('Chats');
 		$this->set('session', $this->UnitSessions->findAllById($student['Student']['session_id'])[0]['UnitSessions']['name']);
 		$this->set('exercices', $this->Exercices->find('list', array('fields' => array('Exercices.id', 'Exercices.subject'))));
+		$this->set('chats', $this->Chats->find('all', array('conditions' => array('Chats.student_id' => $id)
+    )));
 	}
 
 /**
@@ -66,6 +68,7 @@ class StudentsController extends AppController {
 			}
 		}
 	}
+
 
 /**
  * edit exerice method

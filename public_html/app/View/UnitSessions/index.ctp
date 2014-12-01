@@ -1,5 +1,6 @@
 <div class="col-lg-12">
 	<h2><?php echo __('Sessions'); ?></h2>
+	<h3><?php echo $this->Html->link(__('New session'), array('controller' => 'unitSessions', 'action' => 'add')); ?></h3>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>

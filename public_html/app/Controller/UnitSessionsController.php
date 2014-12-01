@@ -65,7 +65,7 @@ class UnitSessionsController extends AppController {
 						$csv_line = fgetcsv($file, 10000, "\r");
 						$tmp = false;
 						foreach ($csv_line as $value) {
-							if ($tmp === true && isset($csv_field[20]) && isset($csv_field[19]) && isset($csv_field[31]))
+							if ($tmp === true)// && isset($csv_field[20]) && isset($csv_field[19]) && isset($csv_field[31]))
 							{
 								$csv_field = explode(";", $value);
 								$data = array(

@@ -2,7 +2,7 @@
 <h2><?php echo __('Student'); ?></h2>
 	<div class="col-xs-6 col-sm-3 col-md-3 col-lg-1">
 	    <a href="#" class="thumbnail">
-	      <img data-src="holder.js/100%x180" alt="...">
+	      <?php echo $this->Html->image($student['Student']['picture'].".jpg", array('alt' => 'CakePHP')); ?>
 	    </a>
 	    <?php if ($authUser["role"] == "admin") { ?>
 	    	<?php echo $this->Html->link(__('Edit Student'), array('action' => 'edit', $student['Student']['id'])); ?>
@@ -138,7 +138,32 @@
     </div>
   </div>
 </div>
+</div>
 
+<div class="col-lg-12">
+<h2>Chat</h2>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<div class="list-group">
+		<?php foreach($chats as $chat) { ?>
+			  <a href="#" class="list-group-item">
+			    <h4 class="list-group-item-heading"><?= $chat['Chats']['user_id'] ?></h4>
+			    <p class="list-group-item-text"><?= $chat['Chats']['message'] ?></p>
+			  </a>
+		<?php } ?>
+		<a href="#" class="list-group-item">
+		    <h4 class="list-group-item-heading">New message</h4>
+		    <div class="list-group-item-text">
+		    <?php
+		    echo $this->Form->create('Chat', array('action' => 'add'));
+		    	echo $this->Form->hidden('student_id', array('value' => $student['Student']['id']));
+		    	echo $this->Form->hidden('user_id', array('value' => $authUser["id"]));
+		    	echo $this->Form->input('message');
+		    	echo $this->Form->end(__('Submit')); ?>
+		    </div>
+		  </a>
+		</div>
+	</div>
+</div>
 <script type="text/javascript">
 	$('#edit_exercice').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget)

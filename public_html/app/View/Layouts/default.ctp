@@ -44,7 +44,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php if ($authUser) { ?>
 			<div id="header">
 				<div class="col-lg-2 col-md-2 col-sm-6 col-sm-6">
-					<?php //echo $this->Html->link( $this->Html->image('logo.png', array('alt' => 'CakePHP')), array( 'controller' => 'students', 'action' => 'home')); ?>
 					<?php echo $this->Html->image('logo.png', array('alt' => 'CakePHP')); ?>
 				</div>
 				<div class="col-lg-10 col-md-10 col-sm-6 col-xs-10">
