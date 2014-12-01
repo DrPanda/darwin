@@ -4,6 +4,7 @@
 	    <a href="#" class="thumbnail">
 	      <img data-src="holder.js/100%x180" alt="...">
 	    </a>
+	    <?php echo $this->Html->link(__('Edit Student'), array('action' => 'edit', $student['Student']['id'])); ?>
 	  </div>
 	<div class="col-xs-6 col-sm-9 col-md-9 col-lg-11">
 		<dl>
@@ -45,45 +46,11 @@
 	</div>
 </div>
 <?php if ($authUser["role"] == "admin") { ?>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Student'), array('action' => 'edit', $student['Student']['id'])); ?></li>
-		<li><?php echo $this->Html->link(__('New Student'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student Exercice'), array('controller' => 'student_exercices', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
 	<div class="related">
-		<h3><?php echo __('Related Unit Sessions'); ?></h3>
-	<?php if (!empty($student['UnitSession'])): ?>
-		<dl>
-			<dt><?php echo __('Id'); ?></dt>
-		<dd>
-	<?php echo $student['UnitSession']['id']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Date Time'); ?></dt>
-		<dd>
-	<?php echo $student['UnitSession']['date_time']; ?>
-&nbsp;</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-	<?php echo $student['UnitSession']['name']; ?>
-&nbsp;</dd>
-		</dl>
-	<?php endif; ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('Edit Unit Session'), array('controller' => 'unit_sessions', 'action' => 'edit', $student['UnitSession']['id'])); ?></li>
-			</ul>
-		</div>
-	</div>
-	<div class="related">
-	<h3><?php echo __('Related Student Exercices'); ?></h3>
+	<h3><?php echo __('Student Exercices'); ?></h3>
 	<?php if (!empty($student['StudentExercice'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Student Id'); ?></th>
 		<th><?php echo __('Exercice Id'); ?></th>
 		<th><?php echo __('Date'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
@@ -92,8 +59,6 @@
 	</tr>
 	<?php foreach ($student['StudentExercice'] as $studentExercice): ?>
 		<tr>
-			<td><?php echo $studentExercice['id']; ?></td>
-			<td><?php echo $studentExercice['student_id']; ?></td>
 			<td><?php echo $studentExercice['exercice_id']; ?></td>
 			<td><?php echo $studentExercice['updated']; ?></td>
 			<td><?php echo $studentExercice['user_id']; ?></td>
@@ -107,12 +72,6 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Student Exercice'), array('controller' => 'student_exercices', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
 </div>
 <?php } ?>
 
@@ -134,7 +93,6 @@
 			<?php
 				echo $this->Form->hidden('student_id', array('value' => $student['Student']['id']));
 				echo $this->Form->input('exercice_id', $exercices);
-				// echo $this->Form->hidden('date');
 				echo $this->Form->hidden('user_id', array('value' => $authUser["id"]));
 				echo $this->Form->select('is_valid', array(true => 'True', false => 'False'));
 			?>
