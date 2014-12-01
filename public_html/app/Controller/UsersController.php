@@ -143,9 +143,14 @@ class UsersController extends AppController {
 	public function login() {
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
-	            return $this->redirect($this->Auth->redirect(array('controller' => 'UnitSessions', 'action' => 'index')));
+	        	if ($this->Auth->user('is_active') == 0) {
+	        		$this->Auth->logout();
+			    	$this->Session->setFlash(__('Your account is not activ.'));
+			    } else if ($this->Auth->user('is_active') == 1) {
+	        	    return $this->redirect($this->Auth->redirect(array('controller' => 'UnitSessions', 'action' => 'index')));
+	       		}
 	        } else {
-	            $this->Session->setFlash(__("Nom d'user ou mot de passe invalide, réessayer"));
+	            $this->Session->setFlash(__("Username or Password invalid, please try again."));
 	        }
 	    }
 	}
