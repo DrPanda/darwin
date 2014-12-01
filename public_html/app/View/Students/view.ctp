@@ -95,7 +95,7 @@
 			<td><?php echo $studentExercice['id']; ?></td>
 			<td><?php echo $studentExercice['student_id']; ?></td>
 			<td><?php echo $studentExercice['exercice_id']; ?></td>
-			<td><?php echo $studentExercice['date']; ?></td>
+			<td><?php echo $studentExercice['updated']; ?></td>
 			<td><?php echo $studentExercice['user_id']; ?></td>
 			<td><?php echo $studentExercice['comment']; ?></td>
 			<td class="actions">
