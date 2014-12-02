@@ -38,7 +38,15 @@ class StudentsController extends AppController {
 			throw new NotFoundException(__('Invalid student'));
 		}
 		$options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
-		$this->set('student', $this->Student->find('first', $options));
+		$student = $this->Student->find('first', $options);
+		$this->set('student', $student);
+		$this->loadModel('UnitSessions');
+		$this->loadModel('Exercices');
+		$this->loadModel('Chats');
+		$this->set('session', $this->UnitSessions->findAllById($student['Student']['session_id'])[0]['UnitSessions']['name']);
+		$this->set('exercices', $this->Exercices->find('list', array('fields' => array('Exercices.id', 'Exercices.subject'))));
+		$this->set('chats', $this->Chats->find('all', array('conditions' => array('Chats.student_id' => $id)
+    )));
 	}
 
 /**
@@ -59,6 +67,30 @@ class StudentsController extends AppController {
 				$this->Session->setFlash(__('The student could not be saved. Please, try again.'));
 			}
 		}
+	}
+
+
+/**
+ * edit exerice method
+ *
+ * @return void
+ */
+
+	public function edit_exercice() {
+		$id = $this->request->data['StudentExercices']['id'];
+		$this->loadModel('StudentExercice');
+		if (!$this->StudentExercice->exists($id)) {
+			throw new NotFoundException(__('Invalid student exercice'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			var_dump($this->request->data);
+			if ($this->StudentExercice->save($this->request->data)) {
+				$this->redirect($this->referer());
+			} else {
+				$this->redirect($this->referer());
+			}
+		} 
+		$this->redirect($this->referer());
 	}
 
 /**

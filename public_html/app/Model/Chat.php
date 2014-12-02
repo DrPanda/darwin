@@ -13,7 +13,7 @@ class Chat extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'chat';
+	public $useTable = 'chats';
 
 /**
  * Display field

@@ -51,7 +51,7 @@ class StudentExercicesController extends AppController {
 			$this->StudentExercice->create();
 			if ($this->StudentExercice->save($this->request->data)) {
 				$this->Session->setFlash(__('The student exercice has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->redirect($this->referer());
 			} else {
 				$this->Session->setFlash(__('The student exercice could not be saved. Please, try again.'));
 			}
@@ -106,6 +106,7 @@ class StudentExercicesController extends AppController {
 		} else {
 			$this->Session->setFlash(__('The student exercice could not be deleted. Please, try again.'));
 		}
+		$this->redirect($this->referer());
 		return $this->redirect(array('action' => 'index'));
 	}
 }

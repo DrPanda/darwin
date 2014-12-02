@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" js no-touch"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta content="HtmlHelper" lang="fr" name="title">
+<meta content="Le rôle de HtmlHelper dans CakePHP est de faciliter la construction des options HTML-related, plus rapide, et more resilient to change." lang="fr" name="description">
+<meta content="html helper,cakephp css,cakephp script,content type,html image,html link,html tag,script block,script start,html url,cakephp style,cakephp crumbs" lang="fr" name="keywords">
+
+    <title>HTMLHelper — documentation CakePHP Cookbook 2.x</title>
+    
+    <link rel="stylesheet" href="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/default.css" type="text/css">
+    <link rel="stylesheet" href="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/ga.js"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/jquery.js"></script>
+    <script type="text/javascript" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/underscore.js"></script>
+    <script type="text/javascript" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/doctools.js"></script>
+    <script type="text/javascript" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/translations.js"></script>
+    <script type="text/javascript" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/app.js"></script>
+    <script type="text/javascript" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/modernizr.foundation.js"></script>
+    <script type="text/javascript" src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/foundation.js"></script>
+    <link rel="top" title="documentation CakePHP Cookbook 2.x" href="http://book.cakephp.org/2.0/fr/index.html">
+    <link rel="up" title="Helpers (Assistants)" href="http://book.cakephp.org/2.0/fr/core-libraries/toc-helpers.html">
+    <link rel="next" title="JSHelper" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/js.html">
+    <link rel="prev" title="FormHelper" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/form.html">
+<link href="http://book.cakephp.org/2.0/fr/_static/favicon.ico" type="image/x-icon" rel="icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="alternate" hreflang="en" href="http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html"><link rel="alternate" hreflang="ja" href="http://book.cakephp.org/2.0/ja/core-libraries/helpers/html.html">
+
+<link rel="search" type="application/opensearchdescription+xml" title="CakePHP Book 2.x Search" href="http://book.cakephp.org/2.0/fr/_static/opensearchdescription-book-2-x.xml">
+<script type="text/javascript">
+window.lang = "fr";
+</script>
+
+  </head>
+  <body>
+
+<div id="container">
+
+<div id="cakephp-global-navigation">
+	<ul>
+		<li class="main"><a href="http://cakephp.org/">CakePHP</a></li>
+		<li class="primary"><a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#" class="empty">Downloads</a>
+			<ul class="second-level">
+				<li><a href="https://github.com/cakephp/cakephp/tags">Releases</a></li>
+				<li><a href="http://pear.cakephp.org/">Pear channel</a></li>
+			</ul>
+		</li>
+		<li class="primary"><a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#" class="empty">Documentation</a>
+			<ul class="second-level">
+				<li><a href="http://api.cakephp.org/">API</a></li>
+				<li><a href="http://book.cakephp.org/">Book</a></li>
+			</ul>
+		</li>
+		<li class="primary"><a href="http://community.cakephp.org/">Community</a>
+			<ul class="second-level">
+				<li><a href="http://webchat.freenode.net/?channels=cakephp&uio=MT1mYWxzZSY5PXRydWUmMTE9MjQ2b8">Help &amp; Support</a></li>
+				<li><a href="https://github.com/cakephp/cakephp/issues">Issues</a></li>
+				<li><a href="http://bakery.cakephp.org/">The Bakery</a></li>
+				<li><a href="http://stackoverflow.com/tags/cakephp">Stack Overflow</a></li>
+				<li><a href="http://www.facebook.com/groups/cake.community">Facebook Group</a></li>
+				<li><a href="http://goo.gl/mSC0s">Google+ Community</a></li>
+				<li><a href="http://www.youtube.com/user/CakePHP">YouTube Channel</a></li>
+				<li><a href="http://podcast.cakephp.org/">CakePHP Podcast</a></li>
+				<li><a href="http://twitter.com/CakePHP">Follow us on Twitter</a></li>
+				<li><a href="http://groups.google.com/group/cake-php">Google Group</a></li>
+				<li><a href="http://github.com/cakephp/cakephp/contributors">Contributors</a></li>
+				<li><a href="http://plugins.cakephp.org/">Plugins &amp; Packages</a></li>
+				<li><a href="http://community.cakephp.org/get-involved">Get Involved</a></li>
+				<li><a href="http://community.cakephp.org/guidelines">Guidelines</a></li>
+				<li><a href="http://cakefest.org/">CakeFest</a></li>
+				<li><a href="http://cakephp.org/logos">Logo</a></li>
+			</ul>
+		</li>
+		<li class="primary"><a href="http://cakephp.org/services">Services</a>
+			<ul class="second-level">
+				<li><a href="http://cakephp.org/services/certification">Certification</a></li>
+				<li><a href="http://cakephp.org/services/consultation">Consultation</a></li>
+				<li><a href="http://cakephp.org/services/support">Support</a></li>
+				<li><a href="http://training.cakephp.org/">Training</a></li>
+			</ul>
+		</li>
+	</ul>
+<select class="nav-select"><option selected="selected">Go to..</option><option value="http://cakephp.org">CakePHP</option><optgroup label="Downloads"><option value="https://github.com/cakephp/cakephp/tags">Releases</option><option value="http://pear.cakephp.org">Pear channel</option></optgroup><optgroup label="Documentation"><option value="http://api.cakephp.org">API</option><option value="http://book.cakephp.org">Book</option></optgroup><optgroup label="Community"><option value="http://webchat.freenode.net/?channels=cakephp&amp;uio=MT1mYWxzZSY5PXRydWUmMTE9MjQ2b8">Help &amp; Support</option><option value="https://github.com/cakephp/cakephp/issues">Issues</option><option value="http://bakery.cakephp.org">The Bakery</option><option value="http://stackoverflow.com/tags/cakephp">Stack Overflow</option><option value="http://www.facebook.com/groups/cake.community">Facebook Group</option><option value="http://goo.gl/mSC0s">Google+ Community</option><option value="http://www.youtube.com/user/CakePHP">YouTube Channel</option><option value="http://podcast.cakephp.org">CakePHP Podcast</option><option value="http://twitter.com/CakePHP">Follow us on Twitter</option><option value="http://groups.google.com/group/cake-php">Google Group</option><option value="http://github.com/cakephp/cakephp/contributors">Contributors</option><option value="http://plugins.cakephp.org">Plugins &amp; Packages</option><option value="http://community.cakephp.org/get-involved">Get Involved</option><option value="http://community.cakephp.org/guidelines">Guidelines</option><option value="http://cakefest.org">CakeFest</option><option value="http://cakephp.org/logos">Logo</option></optgroup><optgroup label="Services"><option value="http://cakephp.org/services/certification">Certification</option><option value="http://cakephp.org/services/consultation">Consultation</option><option value="http://cakephp.org/services/support">Support</option><option value="http://training.cakephp.org">Training</option></optgroup></select></div>
+
+<div class="masthead">
+	<div class="header-backing"></div>
+	<div class="searchbar row">
+		<div class="columns three phone-one">
+			<a class="logo" href="http://book.cakephp.org/2.0/fr/contents.html">
+			<img src="./HTMLHelper — documentation CakePHP Cookbook 2.x_files/cake-logo.png" alt="CakePHP" width="70">
+			</a>
+		</div>
+		
+<div id="searchbox" class="columns nine phone-three">
+
+	<form id="searchform" class="search" action="http://book.cakephp.org/2.0/fr/search.html" method="get">
+		<input class="search-input" autocomplete="off" type="search" name="q" size="18">
+		<input class="search-submit search-big button red" type="submit" value="Recherche">
+		<input type="hidden" name="check_keywords" value="yes">
+		<input type="hidden" name="area" value="default">
+
+		<a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#" id="tablet-nav" class="show-on-phones pale button small">Nav</a>
+	</form>
+
+</div>
+	</div>
+</div>
+<div class="breadcrumb-header">
+	<div class="related row">
+		<div class="columns three root-link">
+			<a href="http://book.cakephp.org/2.0/fr/contents.html">Cookbook 2.x</a>
+		</div>
+		<div class="columns nine">
+			<ul class="inline breadcrumb">
+			<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+				<a href="http://book.cakephp.org/2.0/fr/core-libraries.html" itemprop="url"><span itemprop="title">Librairies du Coeur</span></a>
+			</li>
+			<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+				<a href="http://book.cakephp.org/2.0/fr/core-libraries/toc-helpers.html" accesskey="U" itemprop="url"><span itemprop="title">Helpers (Assistants)</span></a>
+			</li>
+			</ul>
+			<div class="versions dropdown">
+				<a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#">2.x Book</a>
+				<ul>
+					<li><a href="http://book.cakephp.org/3.0/en">3.0 Book</a></li>
+					<li><a href="http://book.cakephp.org/1.3/fr/">1.3 Book</a></li>
+					<li><a href="http://book.cakephp.org/1.2/fr/">1.2 Book</a></li>
+					<li><a href="http://book.cakephp.org/1.1/en">1.1 Book</a></li>
+				</ul>
+			</div>
+
+			<div class="languages dropdown">
+				<a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#">fr</a>
+
+				<ul>
+				
+					<li><a href="http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html">en</a></li>
+				
+					<li><span class="disabled">pt</span></li>
+				
+					<li><span class="disabled">es</span></li>
+				
+					<li><a href="http://book.cakephp.org/2.0/ja/core-libraries/helpers/html.html">ja</a></li>
+				
+					<li><span class="disabled">ru</span></li>
+				
+					<li></li>
+				
+					<li><span class="disabled">zh_CN</span></li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="content row">
+	<div class="document columns nine push-three">
+		<div class="body"><a class="button pale improve" href="https://github.com/cakephp/docs/edit/master/fr/core-libraries/helpers/html.rst" target="_blank">Improve this Doc</a>
+  <div class="section" id="htmlhelper">
+<h1>HTMLHelper<a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#htmlhelper" title="Lien permanent vers ce titre">¶</a></h1>
+<dl class="class">
+<dt id="HtmlHelper">
+<em class="property">class </em><tt class="descname">HtmlHelper</tt><big>(</big><em>View $view</em>, <em>array $settings = array()</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Le rôle du Helper Html dans CakePHP est de fabriquer les options
+du HTML plus facilement, plus rapidement. L’utilisation de cet Helper
+permettra à votre application d’être plus légère bien ancrée et plus
+flexible de l’endroit ou il est placé en relation avec la racine de votre
+domaine.</p>
+<p>De nombreuses méthodes du Helper Html contiennent un paramètre
+<tt class="docutils literal"><span class="pre">$htmlAttributes</span></tt>, qui vous permet d’insérer un attribut supplémentaire
+sur vos tags. Voici quelques exemples sur la façon d’utiliser les paramètres
+$htmlAttributes:</p>
+<div class="highlight-html"><div class="highlight"><pre>Attributs souhaités: <span class="nt">&lt;tag</span> <span class="na">class=</span><span class="s">"someClass"</span> <span class="nt">/&gt;</span>
+Paramètre du tableau: array('class' =&gt; 'someClass')
+
+Attributs souhaités: <span class="nt">&lt;tag</span> <span class="na">name=</span><span class="s">"foo"</span> <span class="na">value=</span><span class="s">"bar"</span> <span class="nt">/&gt;</span>
+Paramètre du tableau:  array('name' =&gt; 'foo', 'value' =&gt; 'bar')
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Le Helper html est disponible dans toutes les vues par défaut.
+Si vous recevez une erreur vous informant qu’il n’est pas disponible,
+c’est habituellement dû a son nom qui a été oublié de la configuration
+manuelle de la variable $helpers du controller.</p>
+</div>
+<div class="section" id="insertion-d-elements-correctement-formates">
+<h2>Insertion d’éléments correctement formatés<a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#insertion-d-elements-correctement-formates" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La tâche la plus importante que le Helper Html accomplit est la
+création d’un balisage bien formé. N’ayez pas peur de l’utiliser
+souvent - vous pouvez cacher les vues dans cakePHP pour économiser
+du temps CPU quand les vues sont rendues et délivrées. Cette section
+couvrira les méthodes du Helper Html et comment les utiliser.</p>
+<dl class="method">
+<dt id="HtmlHelper::charset">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">charset</tt><big>(</big><em>$charset=null</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::charset" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$charset</strong> (<em>string</em>) – Jeu de caractère désiré. S’il est null, la valeur
+de <tt class="docutils literal"><span class="pre">App.encoding</span></tt> sera utilisée.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Utilisé pour créer une balise meta spécifiant le jeu de caractères du
+document. UTF-8 par défaut.</p>
+<p>Exemple d’utilisation:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">charset</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Sinon:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">charset</span><span class="p">(</span><span class="s1">'ISO-8859-1'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=ISO-8859-1"</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::css">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">css</tt><big>(</big><em>mixed $path</em>, <em>array $options = array()</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::css" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.4.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$path</strong> (<em>mixed</em>) – Soit une chaîne du fichier CSS à lier, ou un tableau
+avec plusieurs fichiers.</li>
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’options ou d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs html</em></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Créé un ou plusieurs lien(s) vers un feuille de style CSS. Si la clé
+‘inline’ est définie à false dans les paramètres <tt class="docutils literal"><span class="pre">$options</span></tt>, les balises
+de lien seront ajoutés au bloc <tt class="docutils literal"><span class="pre">css</span></tt> lequel sera intégré à la balise
+entête du document.</p>
+<p>Vous pouvez utiliser  l’option <tt class="docutils literal"><span class="pre">block</span></tt> pour contrôler sur lequel
+des blocs l’élément lié sera ajouté. Par défaut il sera ajouté au bloc
+<tt class="docutils literal"><span class="pre">css</span></tt>.</p>
+<p>Si la clé ‘rel’ dans le tableau <tt class="docutils literal"><span class="pre">$options</span></tt> est défini pour ‘import’,
+la feuille de style sera importée.</p>
+<p>Cette méthode d’inclusion CSS présume que le CSS spécifié se trouve dans
+le répertoire /app/webroot/css si un chemin ne commence par un ‘/’.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="s1">'forms'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/css/forms.css"</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Le premier paramètre peut être un tableau pour inclure des fichiers
+multiples.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'forms'</span><span class="p">,</span> <span class="s1">'tables'</span><span class="p">,</span> <span class="s1">'menu'</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/css/forms.css"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/css/tables.css"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/css/menu.css"</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Vous pouvez inclure un fichier CSS depuis un plugin chargé en utilisant
+<a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-syntaxe-de-plugin"><em class="xref std std-term">syntaxe de plugin</em></a>. Pour inclure
+<tt class="docutils literal"><span class="pre">app/Plugin/DebugKit/webroot/css/toolbar.css</span></tt>, vous pouvez utiliser ce
+qui suit:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="s1">'DebugKit.toolbar.css'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Si vous voulez inclure un fichier CSS qui partage un nom avec un plugin
+chargé vous pouvez faire ce qui suit. Par exemple vous avez un plugin
+<tt class="docutils literal"><span class="pre">Blog</span></tt>, et souhaitez inclure également
+<tt class="docutils literal"><span class="pre">app/webroot/css/Blog.common.css</span></tt>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="o">..</span> <span class="nx">versionchanged</span><span class="o">::</span> <span class="mf">2.4</span>
+</pre></div>
+</div>
+<blockquote>
+<div>echo $this-&gt;Html-&gt;css(‘Blog.common.css’, array(‘plugin’ =&gt; false));</div></blockquote>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.1: </span>L’option <tt class="docutils literal"><span class="pre">block</span></tt> a été ajoutée.
+Le support de <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-syntaxe-de-plugin"><em class="xref std std-term">syntaxe de plugin</em></a> à été ajouté.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::meta">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">meta</tt><big>(</big><em>string $type</em>, <em>string $url = null</em>, <em>array $options = array()</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::meta" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$type</strong> (<em>string</em>) – Le type de balise meta désiré.</li>
+<li><strong>$url</strong> (<em>mixed</em>) – L’URL de la balise meta, soit une chaîne ou un
+<a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-tableau-de-routing"><em class="xref std std-term">tableau de routing</em></a>.</li>
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs HTML</em></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Cette méthode est pratique pour faire des liens vers des ressources
+externes comme RSS/Atom feeds et les favicons. Comme avec css(), vous
+pouvez spécifier si vous voulez l’apparition de la balise en ligne ou
+l’ajouter au bloc <tt class="docutils literal"><span class="pre">meta</span></tt> en définissant la clé ‘inline’ à false dans les
+paramètres $attributes, ex. - <tt class="docutils literal"><span class="pre">array('inline'</span> <span class="pre">=&gt;</span> <span class="pre">false)</span></tt>.</p>
+<p>Si vous définissez l’attribut “type” en utilisant le paramètre $attributes,
+CakePHP contient certains raccourcis:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%">
+<col width="73%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">valeur résultante</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>html</td>
+<td>text/html</td>
+</tr>
+<tr class="row-odd"><td>rss</td>
+<td>application/rss+xml</td>
+</tr>
+<tr class="row-even"><td>atom</td>
+<td>application/atom+xml</td>
+</tr>
+<tr class="row-odd"><td>icon</td>
+<td>image/x-icon</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">meta</span><span class="p">(</span>
+    <span class="s1">'favicon.ico'</span><span class="p">,</span>
+    <span class="s1">'/favicon.ico'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'icon'</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">// Output (line breaks added)</span>
+<span class="x">&lt;link</span>
+<span class="x">    href="http://example.com/favicon.ico"</span>
+<span class="x">    title="favicon.ico" type="image/x-icon"</span>
+<span class="x">    rel="alternate"</span>
+<span class="x">/&gt;</span>
+<span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">meta</span><span class="p">(</span>
+    <span class="s1">'Comments'</span><span class="p">,</span>
+    <span class="s1">'/comments/index.rss'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'rss'</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">// Output (line breaks added)</span>
+<span class="x">&lt;link</span>
+<span class="x">    href="http://example.com/comments/index.rss"</span>
+<span class="x">    title="Comments"</span>
+<span class="x">    type="application/rss+xml"</span>
+<span class="x">    rel="alternate"</span>
+<span class="x">/&gt;</span>
+</pre></div>
+</div>
+<p>Cette méthode peut aussi être utilisée pour ajouter les balise de mots clés
+et les descriptions. Exemple:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">meta</span><span class="p">(</span>
+    <span class="s1">'keywords'</span><span class="p">,</span>
+    <span class="s1">'enter any meta keyword here'</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">// Sortie</span>
+<span class="x">&lt;meta name="keywords" content="enter any meta keyword here" /&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">meta</span><span class="p">(</span>
+    <span class="s1">'description'</span><span class="p">,</span>
+    <span class="s1">'enter any meta description here'</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">// Sortie</span>
+<span class="x">&lt;meta name="description" content="enter any meta description here" /&gt;</span>
+</pre></div>
+</div>
+<p>Si vous voulez ajouter une balise personnalisée alors le premier
+paramètre devra être un tableau. Pour ressortir une balise de robots
+noindex, utilisez le code suivant:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">meta</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'robots'</span><span class="p">,</span> <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="s1">'noindex'</span><span class="p">));</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.1: </span>L’option <tt class="docutils literal"><span class="pre">block</span></tt> a été ajoutée.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::docType">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">docType</tt><big>(</big><em>string $type = 'xhtml-strict'</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::docType" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$type</strong> (<em>string</em>) – Le type de doctype fabriqué.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retourne un balise doctype (X)HTML. Fournissez le doctype en suivant la
+table suivante:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%">
+<col width="57%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">valeur résultante</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>html4-strict</td>
+<td>HTML4 Strict</td>
+</tr>
+<tr class="row-odd"><td>html4-trans</td>
+<td>HTML4 Transitional</td>
+</tr>
+<tr class="row-even"><td>html4-frame</td>
+<td>HTML4 Frameset</td>
+</tr>
+<tr class="row-odd"><td>html5</td>
+<td>HTML5</td>
+</tr>
+<tr class="row-even"><td>xhtml-strict</td>
+<td>XHTML1 Strict</td>
+</tr>
+<tr class="row-odd"><td>xhtml-trans</td>
+<td>XHTML1 Transitional</td>
+</tr>
+<tr class="row-even"><td>xhtml-frame</td>
+<td>XHTML1 Frameset</td>
+</tr>
+<tr class="row-odd"><td>xhtml11</td>
+<td>XHTML1.1</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">docType</span><span class="p">();</span>
+<span class="c1">// Sortie:</span>
+<span class="c1">// &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"</span>
+<span class="c1">//    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">docType</span><span class="p">(</span><span class="s1">'html5'</span><span class="p">);</span>
+<span class="c1">// Sortie: &lt;!DOCTYPE html&gt;</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">docType</span><span class="p">(</span><span class="s1">'html4-trans'</span><span class="p">);</span>
+<span class="c1">// Sortie:</span>
+<span class="c1">// &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"</span>
+<span class="c1">//    "http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.1: </span>La valeur par défaut de doctype est HTML5 avec la version 2.1.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::style">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">style</tt><big>(</big><em>array $data</em>, <em>boolean $oneline = true</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::style" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$data</strong> (<em>array</em>) – Un ensemble de clé =&gt; valeurs avec des propriétés CSS.</li>
+<li><strong>$oneline</strong> (<em>boolean</em>) – Le contenu sera sur une seule ligne.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Construit les définitions de style CSS en se basant sur les clés et
+valeurs du tableau passé à la méthode. Particulièrement pratique si votre
+fichier CSS est dynamique.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">style</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">'background'</span> <span class="o">=&gt;</span> <span class="s1">'#633'</span><span class="p">,</span>
+    <span class="s1">'border-bottom'</span> <span class="o">=&gt;</span> <span class="s1">'1px solid #000'</span><span class="p">,</span>
+    <span class="s1">'padding'</span> <span class="o">=&gt;</span> <span class="s1">'10px'</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Affichera</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="nx">background</span><span class="o">:</span><span class="c1">#633; border-bottom:1px solid #000; padding:10px;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::image">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">image</tt><big>(</big><em>string $path</em>, <em>array $options = array()</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">param string $path:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Chemin de l’image.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param array $options:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Un tableau de <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs html</em></a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Créé une balise image formatée. Le chemin fournit devra être relatif à
+/app/webroot/img/.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s1">'cake_logo.png'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'alt'</span> <span class="o">=&gt;</span> <span class="s1">'CakePHP'</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/img/cake_logo.png"</span> <span class="na">alt=</span><span class="s">"CakePHP"</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Pour créer un lien d’image, spécifiez le lien de destination en
+utilisant l’option <tt class="docutils literal"><span class="pre">url</span></tt> dans <tt class="docutils literal"><span class="pre">$htmlAttributes</span></tt>.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s2">"recipes/6.jpg"</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"alt"</span> <span class="o">=&gt;</span> <span class="s2">"Brownies"</span><span class="p">,</span>
+    <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'recipes'</span><span class="p">,</span> <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'view'</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Affichera:</p>
+<blockquote>
+<div><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/recipes/view/6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/img/recipes/6.jpg"</span> <span class="na">alt=</span><span class="s">"Brownies"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Si vous créez des images dans des mails, ou voulez des chemins
+absolus pour les images, vous pouvez utiliser l’option <tt class="docutils literal"><span class="pre">fullBase</span></tt>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s2">"logo.png"</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'fullBase'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://example.com/img/logo.jpg"</span> <span class="na">alt=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Vous pouvez inclure des fichiers images depuis un plugin chargé en
+utilisant la <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-syntaxe-de-plugin"><em class="xref std std-term">syntaxe de plugin</em></a>. Pour inclure
+<tt class="docutils literal"><span class="pre">app/Plugin/DebugKit/webroot/img/icon.png</span></tt>, vous pouvez faire cela:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s1">'DebugKit.icon.png'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Si vous voulez inclure un fichier image qui partage un nom
+avec un plugin chargé vous pouvez faire ce qui suit. Par exemple si vous
+avez in plugin <cite>Blog`</cite>, et voulez inclure également
+<tt class="docutils literal"><span class="pre">app/webroot/js/Blog.icon.png</span></tt>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s1">'Blog.icon.png'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'plugin'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">));</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.1: </span>L’option <tt class="docutils literal"><span class="pre">fullBase</span></tt> a été ajouté.
+Le support de <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-syntaxe-de-plugin"><em class="xref std std-term">syntaxe de plugin</em></a> a été ajouté.</p>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::link">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">link</tt><big>(</big><em>string $title</em>, <em>mixed $url = null</em>, <em>array $options = array()</em>, <em>string $confirmMessage = false</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::link" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">param string $title:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Le texte à afficher comme corps du lien.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param mixed $url:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Soit la chaîne spécifiant le chemin, ou un
+<a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-tableau-de-routing"><em class="xref std std-term">tableau de routing</em></a>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param array $options:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Un tableau d’ :<cite>attributs HTML</cite>.</td>
+</tr>
+</tbody>
+</table>
+<p>Méthode générale pour la création de liens HTML. Utilisez les <tt class="docutils literal"><span class="pre">$options</span></tt>
+pour spécifier les attributs des éléments et si le <tt class="docutils literal"><span class="pre">$title</span></tt> devra ou
+non être échappé.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span>
+    <span class="s1">'Enter'</span><span class="p">,</span>
+    <span class="s1">'/pages/home'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'button'</span><span class="p">,</span> <span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'_blank'</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/pages/home"</span> <span class="na">class=</span><span class="s">"button"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Enter<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Utilisez l’option <tt class="docutils literal"><span class="pre">'full_base'</span> <span class="pre">=&gt;</span> <span class="pre">true</span></tt> pour des URLs absolues:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span>
+    <span class="s1">'Dashboard'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'dashboards'</span><span class="p">,</span>
+        <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'index'</span><span class="p">,</span>
+        <span class="s1">'full_base'</span> <span class="o">=&gt;</span> <span class="k">true</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.yourdomain.com/dashboards/index"</span><span class="nt">&gt;</span>Dashboard<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Spécifiez <tt class="docutils literal"><span class="pre">$confirmMessage</span></tt> pour afficher une boite de dialogue de
+confirmation <tt class="docutils literal"><span class="pre">confirm()</span></tt> JavaScript:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span>
+    <span class="s1">'Delete'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'recipes'</span><span class="p">,</span> <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'delete'</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(),</span>
+    <span class="s2">"Are you sure you wish to delete this recipe?"</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/recipes/delete/6"</span> <span class="na">onclick=</span><span class="s">"return confirm('Are you sure you wish to delete this recipe?');"</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Les chaînes de requête peuvent aussi être créées avec <tt class="docutils literal"><span class="pre">link()</span></tt>.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="s1">'View image'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'images'</span><span class="p">,</span>
+    <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'view'</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">'?'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'height'</span> <span class="o">=&gt;</span> <span class="mi">400</span><span class="p">,</span> <span class="s1">'width'</span> <span class="o">=&gt;</span> <span class="mi">500</span><span class="p">))</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/images/view/1?height=400&amp;width=500"</span><span class="nt">&gt;</span>View image<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Quand il y a utilisation de paramètres nommés, utilisez la syntaxe en
+tableau et incluez les noms pour TOUS les paramètres dans l’URL. En
+utilisant la syntaxe en chaîne pour les paramètres (par ex
+“recipes/view/6/comments:false” va résulter à ce que les caractères
+seront echappés du HTML et le lien ne fonctionnera pas comme souhaité.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s2">"recipes/6.jpg"</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">"alt"</span> <span class="o">=&gt;</span> <span class="s2">"Brownies"</span><span class="p">)),</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'recipes'</span><span class="p">,</span>
+        <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'view'</span><span class="p">,</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s1">'comments'</span> <span class="o">=&gt;</span> <span class="k">false</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/recipes/view/id:6/comments:false"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/img/recipes/6.jpg"</span> <span class="na">alt=</span><span class="s">"Brownies"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Les caractères spéciaux HTML de <tt class="docutils literal"><span class="pre">$title</span></tt> seront convertis en entités
+HTML. Pour désactiver cette conversion, définissez l’option escape à
+false dans le tableau <tt class="docutils literal"><span class="pre">$options</span></tt>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s2">"recipes/6.jpg"</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">"alt"</span> <span class="o">=&gt;</span> <span class="s2">"Brownies"</span><span class="p">)),</span>
+    <span class="s2">"recipes/view/6"</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'escape'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/recipes/view/6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/img/recipes/6.jpg"</span> <span class="na">alt=</span><span class="s">"Brownies"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Définir <tt class="docutils literal"><span class="pre">escape</span></tt> à false va aussi désactiver l’échappement des attributs
+du lien. Puisque depuis 2.4, vous pouvez utiliser l’option <tt class="docutils literal"><span class="pre">escapeTitle</span></tt>
+pour juste désactiver l’échappement du titre et pas des attributs.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s1">'recipes/6.jpg'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'alt'</span> <span class="o">=&gt;</span> <span class="s1">'Brownies'</span><span class="p">)),</span>
+    <span class="s1">'recipes/view/6'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'escapeTitle'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'hi "howdy"'</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/recipes/view/6"</span> <span class="na">title=</span><span class="s">"hi &amp;quot;howdy&amp;quot;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/img/recipes/6.jpg"</span> <span class="na">alt=</span><span class="s">"Brownies"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.4: </span>L’option <tt class="docutils literal"><span class="pre">escapeTitle</span></tt> a été ajoutée.</p>
+<p>Regardez aussi la méthode <a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::url" title="HtmlHelper::url"><tt class="xref php php-meth docutils literal"><span class="pre">HtmlHelper::url</span></tt></a> pour
+plus d’exemples des différents types d’URLs.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::media">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">media</tt><big>(</big><em>string|array $path</em>, <em>array $options</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$path</strong> (<em>string|array</em>) – Chemin du fichier vidéo, relatif au répertoire
+<cite>webroot/{$options[‘pathPrefix’]}</cite>. Ou un tableau ou chaque élément
+peut être la chaîne d’un chemin ou un tableau associatif contenant
+les clés <cite>src</cite> et <cite>type</cite>.</li>
+<li><strong>$options</strong> (<em>array</em>) – <p>Un tableau d’attributs HTML, et d’options spéciales.</p>
+<p>Options:</p>
+<ul>
+<li><cite>type</cite> Type d’éléments média à générer, les valeurs valides sont
+“audio” ou “video”. Si le type n’est pas fourni le type de média se
+basera sur le mime type du fichier.</li>
+<li><cite>text</cite> Texte à inclure dans la balise vidéo.</li>
+<li><cite>pathPrefix</cite> Préfixe du chemin à utiliser pour les URLs relatives,
+par défaut à ‘files/’.</li>
+<li><cite>fullBase</cite> Si il est fourni l’attribut src prendra l’adresse complète
+incluant le nom de domaine.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">Introduit dans la version 2.1.</span></p>
+</div>
+<p>Retourne une balise formatée audio/video:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">media</span><span class="p">(</span><span class="s1">'audio.mp3'</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">// Sortie</span>
+<span class="x">&lt;audio src="/files/audio.mp3"&gt;&lt;/audio&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">media</span><span class="p">(</span><span class="s1">'video.mp4'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'fullBase'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="s1">'Fallback text'</span>
+<span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">// Sortie</span>
+<span class="x">&lt;video src="http://www.somehost.com/files/video.mp4"&gt;Fallback text&lt;/video&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">media</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'video.mp4'</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">'src'</span> <span class="o">=&gt;</span> <span class="s1">'video.ogg'</span><span class="p">,</span>
+            <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"video/ogg; codecs='theora, vorbis'"</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'autoplay'</span><span class="p">)</span>
+<span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">// Sortie</span>
+<span class="x">&lt;video autoplay="autoplay"&gt;</span>
+<span class="x">    &lt;source src="/files/video.mp4" type="video/mp4"/&gt;</span>
+<span class="x">    &lt;source src="/files/video.ogg" type="video/ogg;</span>
+<span class="x">        codecs='theora, vorbis'"/&gt;</span>
+<span class="x">&lt;/video&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::tag">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">tag</tt><big>(</big><em>string $tag</em>, <em>string $text</em>, <em>array $htmlAttributes</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::tag" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$tag</strong> (<em>string</em>) – Le nom de la balise créée.</li>
+<li><strong>$text</strong> (<em>string</em>) – Le contenu de la balise.</li>
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’attributs html <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs html</em></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retourne des textes enveloppé dans une balise spécifiée. Si il n’y a
+pas de texte spécifié alors le contenu du &lt;tag&gt; sera retourné:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="o">..</span> <span class="nx">code</span><span class="o">-</span><span class="nx">block</span><span class="o">::</span> <span class="na">php</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>&lt;?php
+echo $this-&gt;Html-&gt;tag(‘span’, ‘Bonjour le Monde’, array(‘class’ =&gt; ‘welcome’));
+?&gt;</p>
+<p>// Affichera
+&lt;span class=”welcome”&gt;Bonjour le Monde&lt;/span&gt;</p>
+<p>// Pas de texte spécifié.
+&lt;?php
+echo $this-&gt;Html-&gt;tag(‘span’, null, array(‘class’ =&gt; ‘welcome’));
+?&gt;</p>
+<p>// Affichera
+&lt;span class=”welcome”&gt;</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Le texte n’est pas échappé par défaut mais vous pouvez utiliser
+<tt class="docutils literal"><span class="pre">$htmlOptions['escape']</span> <span class="pre">=</span> <span class="pre">true</span></tt> pour échapper votre texte. Ceci
+remplace un quatrième paramètre <tt class="docutils literal"><span class="pre">boolean</span> <span class="pre">$escape</span> <span class="pre">=</span> <span class="pre">false</span></tt> qui était
+présent dans les précédentes versions.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::div">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">div</tt><big>(</big><em>string $class</em>, <em>string $text</em>, <em>array $options</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::div" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$class</strong> (<em>string</em>) – Le nom de classe de la div.</li>
+<li><strong>$text</strong> (<em>string</em>) – Le contenu de la div.</li>
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’attributs <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs html</em></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Utilisé pour les sections de balisage enveloppés dans des div. Le premier
+paramètre spécifie une clasee CSS, et le second est utilisé pour fournir
+le texte à envelopper par les balises div. Si le dernier paramètre à été
+défini à true, $text sera affiché en HTML-échappé.</p>
+<p>Si aucun texte n’est spécifié, seulement une balise div d’ouverture est
+retournée.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">div</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="s1">'Entrez votre numéro de carte bleue S.V.P'</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">// Affichera</span>
+<span class="x">&lt;div class="error"&gt;Entrez votre numéro de carte bleue S.V.P&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::para">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">para</tt><big>(</big><em>string $class</em>, <em>string $text</em>, <em>array $options</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::para" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$class</strong> (<em>string</em>) – Le nom de classe du paragraphe.</li>
+<li><strong>$text</strong> (<em>string</em>) – Le contenu du paragraphe.</li>
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’attributs <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs html</em></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retourne un texte enveloppé dans une balise CSS &lt;p&gt;. Si aucun texte
+CSS est fourni, un simple &lt;p&gt; de démarrage est retourné.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">para</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="s1">'Bonjour le Monde'</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">// Affichera</span>
+<span class="x">&lt;p&gt;Bonjour le Monde&lt;/p&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::script">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">script</tt><big>(</big><em>mixed $url</em>, <em>mixed $options</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::script" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$url</strong> (<em>mixed</em>) – Soit un simple fichier Javascript, ou un
+tableau de chaînes pour plusieurs fichiers.</li>
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’attributs <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs html</em></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Inclus un(des) fichier(s), présent soit localement soit à une URL
+distante.</p>
+<p>Par défaut, les tags de script sont ajoutés au document inline. Si vous
+le surcharger en configurant <tt class="docutils literal"><span class="pre">$options['inline']</span></tt> à false, les tags de
+script vont plutôt être ajoutés au block <tt class="docutils literal"><span class="pre">script</span></tt> que vous pouvez
+afficher aileurs dans le document. Si vous souhaitez surcharger le nom
+du block utilisé, vous pouvez le faire en configurant
+<tt class="docutils literal"><span class="pre">$options['block']</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">$options['once']</span></tt> contrôle si vous voulez ou pas inclure le script une
+fois par requête. Par défaut à true.</p>
+<p>Vous pouvez utiliser $options pour définir des propriétés supplémentaires
+pour la balise script générée. Si un tableau de balise script est utilisé,
+les attributs seront appliqués à toutes les balises script générées.</p>
+<p>Cette méthode d’inclusion de fichier JavaScript suppose que les fichiers
+JavaScript spécifiés se trouvent dans le répertoire <tt class="docutils literal"><span class="pre">/app/webroot/js</span></tt>.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'scripts'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">href=</span><span class="s">"/js/scripts.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>Vous pouvez lier à des fichiers avec des chemins absolus
+tant qu’ils ne se trouvent pas dans <tt class="docutils literal"><span class="pre">app/webroot/js</span></tt>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'/autrerep/fichier_script'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Vous pouvez aussi lier à une URL d’un dépôt distant:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'http://code.jquery.com/jquery.min.js'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">href=</span><span class="s">"http://code.jquery.com/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>Le premier paramètre peut être un tableau pour inclure des
+fichiers multiples.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'jquery'</span><span class="p">,</span> <span class="s1">'wysiwyg'</span><span class="p">,</span> <span class="s1">'scripts'</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Affichera:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">href=</span><span class="s">"/js/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">href=</span><span class="s">"/js/wysiwyg.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">href=</span><span class="s">"/js/scripts.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>Vous pouvez insérer dans la balise script un bloc spécifique en
+utilisant l’option <tt class="docutils literal"><span class="pre">block</span></tt>.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'wysiwyg'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'block'</span> <span class="o">=&gt;</span> <span class="s1">'scriptBottom'</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Dans votre layout, vous pouvez ressortir toutes les balises script ajoutées
+dans ‘scriptBottom’:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">'scriptBottom'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Vous pouvez inclure des fichiers de script depuis un plugin en utilisant
+la syntaxe <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-syntaxe-de-plugin"><em class="xref std std-term">syntaxe de plugin</em></a>. Pour inclure
+<tt class="docutils literal"><span class="pre">app/Plugin/DebugKit/webroot/js/toolbar.js</span></tt> vous devriez faire cela:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'DebugKit.toolbar.js'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Si vous voulez inclure un fichier de script qui partage un nom de fichier
+avec un plugin chargé vous pouvez faire cela. Par exemple si vous avez
+Un plugin <tt class="docutils literal"><span class="pre">Blog</span></tt>, et voulez inclure également
+<tt class="docutils literal"><span class="pre">app/webroot/js/Blog.plugins.js</span></tt>, vous devriez:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">script</span><span class="p">(</span><span class="s1">'Blog.plugins.js'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'plugin'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">));</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.1: </span>L’option <tt class="docutils literal"><span class="pre">block</span></tt> a été ajouté.
+Le support de la syntaxe <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-syntaxe-de-plugin"><em class="xref std std-term">syntaxe de plugin</em></a> a été ajouté.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::scriptBlock">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">scriptBlock</tt><big>(</big><em>$code</em>, <em>$options = array()</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::scriptBlock" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$code</strong> (<em>string</em>) – Le code à placer dans la balise script.</li>
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’attributs <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs html</em></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Génère un bloc de code contenant des options <tt class="docutils literal"><span class="pre">$options['inline']</span></tt>
+définies de <tt class="docutils literal"><span class="pre">$code</span></tt> à mettre à false pour voir le bloc de script
+apparaître dans le bloc de <tt class="docutils literal"><span class="pre">script</span></tt> de la vue. D’autre options définies
+seront ajoutées comme attributs dans les balises de script.
+<tt class="docutils literal"><span class="pre">$this-&gt;Html-&gt;scriptBlock('stuff',</span> <span class="pre">array('defer'</span> <span class="pre">=&gt;</span> <span class="pre">true));</span></tt> créera une
+balise script avec l’attribut <tt class="docutils literal"><span class="pre">defer="defer"</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::scriptStart">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">scriptStart</tt><big>(</big><em>$options = array()</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::scriptStart" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs HTML</em></a> à
+utiliser quand scriptEnd est appelé.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Débute la mise en mémoire tampon d’un bloc de code. Ce bloc de code
+va capturer toutes les sorties entre <tt class="docutils literal"><span class="pre">scriptStart()</span></tt> et <tt class="docutils literal"><span class="pre">scriptEnd()</span></tt>
+et crée une balise script. Les options sont les mêmes que celles de
+<tt class="docutils literal"><span class="pre">scriptBlock()</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::scriptEnd">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">scriptEnd</tt><big>(</big><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::scriptEnd" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Termine la mise en mémoire tampon d’un bloc de script, retourne l’élément
+script généré ou null si le bloc de script à été ouvert avec inline=false.</p>
+<p>Un exemple de l’utilisation de <tt class="docutils literal"><span class="pre">scriptStart()</span></tt> et <tt class="docutils literal"><span class="pre">scriptEnd()</span></tt>
+pourrait être:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">scriptStart</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'inline'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">));</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Js</span><span class="o">-&gt;</span><span class="na">alert</span><span class="p">(</span><span class="s1">'je suis dans le JavaScript'</span><span class="p">);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">scriptEnd</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::nestedList">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">nestedList</tt><big>(</big><em>array $list</em>, <em>array $options = array()</em>, <em>array $itemOptions = array()</em>, <em>string $tag = 'ul'</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::nestedList" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$list</strong> (<em>array</em>) – Ensemble d’éléments à lister.</li>
+<li><strong>$options</strong> (<em>array</em>) – Attributs HTML supplémentaires des balises de listes
+(ol/ul) ou si ul/ol utilise cela comme une balise.</li>
+<li><strong>$itemOptions</strong> (<em>array</em>) – Attributs additionnels des balises de listes
+item(LI).</li>
+<li><strong>$tag</strong> (<em>string</em>) – Type de balise liste à utiliser (ol/ul).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Fabrique une liste imbriquée  (UL/OL) dans un tableau associatif:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="nv">$list</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Languages'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'English'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">'American'</span><span class="p">,</span>
+            <span class="s1">'Canadian'</span><span class="p">,</span>
+            <span class="s1">'British'</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="s1">'Spanish'</span><span class="p">,</span>
+        <span class="s1">'German'</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">nestedList</span><span class="p">(</span><span class="nv">$list</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Sortie:</p>
+<div class="highlight-html"><div class="highlight"><pre>// Affichera (sans les espaces blancs)
+<span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span>Languages
+        <span class="nt">&lt;ul&gt;</span>
+            <span class="nt">&lt;li&gt;</span>English
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>American<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>Canadian<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>British<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;</span>Spanish<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;</span>German<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::tableHeaders">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">tableHeaders</tt><big>(</big><em>array $names</em>, <em>array $trOptions = null</em>, <em>array $thOptions = null</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::tableHeaders" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$names</strong> (<em>array</em>) – Un tableau de chaîne pour créer les entêtes de tableau.</li>
+<li><strong>$trOptions</strong> (<em>array</em>) – Un tableau d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs HTML</em></a>
+pour le &lt;tr&gt;.</li>
+<li><strong>$thOptions</strong> (<em>array</em>) – Un tableau d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs HTML</em></a>
+pour l’élément &lt;th&gt;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Créé une ligne de cellule d’en-tête à placer dans la balise &lt;table&gt;.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Title'</span><span class="p">,</span> <span class="s1">'Active'</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>// Affichera</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Date<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Title<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Active<span class="nt">&lt;/th&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableHeaders</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Date'</span><span class="p">,</span><span class="s1">'Title'</span><span class="p">,</span><span class="s1">'Active'</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'status'</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'product_table'</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Sortie:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"status"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"product_table"</span><span class="nt">&gt;</span>Date<span class="nt">&lt;/th&gt;</span>
+     <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"product_table"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/th&gt;</span>
+     <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"product_table"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/th&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.2: </span><tt class="docutils literal"><span class="pre">tableHeaders()</span></tt> accepte maintenant les attributs par cellule,
+regardez ci-dessous.</p>
+</div>
+<p>Depuis 2.2 vous pouvez définir des attributs par colonne, ceux-ci sont
+utilisés à la place de ceux par défaut dans <tt class="docutils literal"><span class="pre">$thOptions</span></tt>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">'id'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Name'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'highlight'</span><span class="p">)),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Date'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'sortable'</span><span class="p">))</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Sortie:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>id<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"sortable"</span><span class="nt">&gt;</span>Date<span class="nt">&lt;/th&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::tableCells">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">tableCells</tt><big>(</big><em>array $data</em>, <em>array $oddTrOptions = null</em>, <em>array $evenTrOptions = null</em>, <em>$useCount = false</em>, <em>$continueOddEven = true</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::tableCells" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$data</strong> (<em>array</em>) – Un tableau à deux dimensions avec les données pour les
+lignes.</li>
+<li><strong>$oddTrOptions</strong> (<em>array</em>) – Un tableau d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs HTML</em></a>
+pour les &lt;tr&gt; impairs.</li>
+<li><strong>$evenTrOptions</strong> (<em>array</em>) – Un tableau d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs HTML</em></a>
+pour les &lt;tr&gt; pairs.</li>
+<li><strong>$useCount</strong> (<em>boolean</em>) – Ajoute la classe “column-$i”.</li>
+<li><strong>$continueOddEven</strong> (<em>boolean</em>) – Si à false, utilisera une variable $count
+non-statique, ainsi le compteur impair/pair est remis à zéro juste pour
+cet appel.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Créé des cellules de table, en assignant aux lignes  des attributs &lt;tr&gt;
+différents pour les lignes paires et les lignes impaires. Entoure une
+simple table de cellule dans un array() pour des attributs &lt;td&gt;
+spécifiques.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableCells</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Jul 7th, 2007'</span><span class="p">,</span> <span class="s1">'Best Brownies'</span><span class="p">,</span> <span class="s1">'Yes'</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Jun 21st, 2007'</span><span class="p">,</span> <span class="s1">'Smart Cookies'</span><span class="p">,</span> <span class="s1">'Yes'</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Aug 1st, 2006'</span><span class="p">,</span> <span class="s1">'Anti-Java Cake'</span><span class="p">,</span> <span class="s1">'No'</span><span class="p">),</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Sortie:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;tr&gt;&lt;td&gt;</span>Jul 7th, 2007<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Best Brownies<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Yes<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;&lt;td&gt;</span>Jun 21st, 2007<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Smart Cookies<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Yes<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;&lt;td&gt;</span>Aug 1st, 2006<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Anti-Java Cake<span class="nt">&lt;/td&gt;&lt;td&gt;</span>No<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableCells</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Jul 7th, 2007'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'Best Brownies'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'highlight'</span><span class="p">))</span> <span class="p">,</span> <span class="s1">'Yes'</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Jun 21st, 2007'</span><span class="p">,</span> <span class="s1">'Smart Cookies'</span><span class="p">,</span> <span class="s1">'Yes'</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'Aug 1st, 2006'</span><span class="p">,</span> <span class="s1">'Anti-Java Cake'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'No'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'special'</span><span class="p">))),</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>// Sortie</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;tr&gt;&lt;td&gt;</span>Jul 7th, 2007<span class="nt">&lt;/td&gt;&lt;td</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>Best Brownies<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Yes<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;&lt;td&gt;</span>Jun 21st, 2007<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Smart Cookies<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Yes<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;&lt;td&gt;</span>Aug 1st, 2006<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Anti-Java Cake<span class="nt">&lt;/td&gt;&lt;td</span> <span class="na">id=</span><span class="s">"special"</span><span class="nt">&gt;</span>No<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableCells</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">'Red'</span><span class="p">,</span> <span class="s1">'Apple'</span><span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">'Orange'</span><span class="p">,</span> <span class="s1">'Orange'</span><span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">'Yellow'</span><span class="p">,</span> <span class="s1">'Banana'</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'darker'</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"darker"</span><span class="nt">&gt;&lt;td&gt;</span>Red<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Apple<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;&lt;td&gt;</span>Orange<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Orange<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"darker"</span><span class="nt">&gt;&lt;td&gt;</span>Yellow<span class="nt">&lt;/td&gt;&lt;td&gt;</span>Banana<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::url">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">url</tt><big>(</big><em>mixed $url = NULL</em>, <em>boolean $full = false</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::url" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$url</strong> (<em>mixed</em>) – Un <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-tableau-de-routing"><em class="xref std std-term">tableau de routing</em></a>.</li>
+<li><strong>$full</strong> (<em>mixed</em>) – Soit un booléen s’il faut ou pas que la  base du
+chemin soit incluse ou un tableau d’options pour le router
+<a class="reference internal" href="http://book.cakephp.org/2.0/fr/development/routing.html#Router::url" title="Router::url"><tt class="xref php php-meth docutils literal"><span class="pre">Router::url()</span></tt></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retourne une URL pointant vers une combinaison controller et action.
+Si $url est vide, cela retourne la REQUEST_URI, sinon cela génère la
+combinaison d’une URL pour le controller et d’une action. Si full est à
+true, la base complète de l’URL sera ajoutée en amont du résultat:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">"controller"</span> <span class="o">=&gt;</span> <span class="s2">"posts"</span><span class="p">,</span>
+    <span class="s2">"action"</span> <span class="o">=&gt;</span> <span class="s2">"view"</span><span class="p">,</span>
+    <span class="s2">"bar"</span>
+<span class="p">));</span>
+
+<span class="c1">// Restituera</span>
+<span class="o">/</span><span class="nx">posts</span><span class="o">/</span><span class="nx">view</span><span class="o">/</span><span class="nx">bar</span>
+</pre></div>
+</div>
+<p>Voici quelques exemples supplémentaires:</p>
+<p>URL avec des paramètres nommés:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">"controller"</span> <span class="o">=&gt;</span> <span class="s2">"posts"</span><span class="p">,</span>
+    <span class="s2">"action"</span> <span class="o">=&gt;</span> <span class="s2">"view"</span><span class="p">,</span>
+    <span class="s2">"foo"</span> <span class="o">=&gt;</span> <span class="s2">"bar"</span>
+<span class="p">));</span>
+
+<span class="c1">// Restituera</span>
+<span class="o">/</span><span class="nx">posts</span><span class="o">/</span><span class="nx">view</span><span class="o">/</span><span class="nx">foo</span><span class="o">:</span><span class="nx">bar</span>
+</pre></div>
+</div>
+<p>URL avec une extension:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">"controller"</span> <span class="o">=&gt;</span> <span class="s2">"posts"</span><span class="p">,</span>
+    <span class="s2">"action"</span> <span class="o">=&gt;</span> <span class="s2">"list"</span><span class="p">,</span>
+    <span class="s2">"ext"</span> <span class="o">=&gt;</span> <span class="s2">"rss"</span>
+<span class="p">));</span>
+
+<span class="c1">// Restituera</span>
+<span class="o">/</span><span class="nx">posts</span><span class="o">/</span><span class="k">list</span><span class="o">.</span><span class="nx">rss</span>
+</pre></div>
+</div>
+<p>URL (commençant par  ‘/’) avec la base complète d’URL ajoutée:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="s1">'/posts'</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// Restituera</span>
+<span class="nx">http</span><span class="o">://</span><span class="nx">somedomain</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">posts</span>
+</pre></div>
+</div>
+<p>URL avec des paramètres GET et une ancre nommée:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">"controller"</span> <span class="o">=&gt;</span> <span class="s2">"posts"</span><span class="p">,</span>
+    <span class="s2">"action"</span> <span class="o">=&gt;</span> <span class="s2">"search"</span><span class="p">,</span>
+    <span class="s2">"?"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">"foo"</span> <span class="o">=&gt;</span> <span class="s2">"bar"</span><span class="p">),</span>
+    <span class="s2">"#"</span> <span class="o">=&gt;</span> <span class="s2">"first"</span><span class="p">));</span>
+
+<span class="c1">// Restituera</span>
+<span class="o">/</span><span class="nx">posts</span><span class="o">/</span><span class="nx">search</span><span class="o">?</span><span class="nx">foo</span><span class="o">=</span><span class="nx">bar</span><span class="c1">#first</span>
+</pre></div>
+</div>
+<p>Pour plus d’information voir
+<a class="reference external" href="http://api.cakephp.org/2.4/class-Router.html#_url">Router::url</a>
+dans l’ API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::useTag">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">useTag</tt><big>(</big><em>string $tag</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::useTag" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Retourne un bloc existant formaté de balise <tt class="docutils literal"><span class="pre">$tag</span></tt>:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">useTag</span><span class="p">(</span>
+    <span class="s1">'form'</span><span class="p">,</span>
+    <span class="s1">'http://example.com'</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'method'</span> <span class="o">=&gt;</span> <span class="s1">'post'</span><span class="p">,</span> <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'myform'</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"http://example.com"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"myform"</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="changer-la-restitution-des-balises-avec-le-helper-html">
+<h2>Changer la restitution des balises avec le Helper Html<a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#changer-la-restitution-des-balises-avec-le-helper-html" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="method">
+<dt id="HtmlHelper::loadConfig">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">loadConfig</tt><big>(</big><em>mixed $configFile</em>, <em>string $path = null</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::loadConfig" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Les jeux de balises pour le Helper Html <a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper" title="HtmlHelper"><tt class="xref php php-class docutils literal"><span class="pre">HtmlHelper</span></tt></a> sont
+conforme au standard XHTML, toutefois si vous avez besoin de générer
+du HTML pour les standards HTML5 vous aurez besoin de créer et de charger
+un nouveau fichier de configuration de balise contenant les balises
+que vous aimeriez utiliser. Pour changer les balises utilisées créez
+un fichier <tt class="docutils literal"><span class="pre">app/Config/html5_tags.php</span></tt> contenant:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'tags'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'css'</span> <span class="o">=&gt;</span> <span class="s1">'&lt;link rel="%s" href="%s" %s&gt;'</span><span class="p">,</span>
+    <span class="s1">'style'</span> <span class="o">=&gt;</span> <span class="s1">'&lt;style%s&gt;%s&lt;/style&gt;'</span><span class="p">,</span>
+    <span class="s1">'charset'</span> <span class="o">=&gt;</span> <span class="s1">'&lt;meta charset="%s"&gt;'</span><span class="p">,</span>
+    <span class="s1">'javascriptblock'</span> <span class="o">=&gt;</span> <span class="s1">'&lt;script%s&gt;%s&lt;/script&gt;'</span><span class="p">,</span>
+    <span class="s1">'javascriptstart'</span> <span class="o">=&gt;</span> <span class="s1">'&lt;script&gt;'</span><span class="p">,</span>
+    <span class="s1">'javascriptlink'</span> <span class="o">=&gt;</span> <span class="s1">'&lt;script src="%s"%s&gt;&lt;/script&gt;'</span><span class="p">,</span>
+    <span class="c1">// ...</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Vous pouvez alors charger ces balises définis en appelant
+<tt class="docutils literal"><span class="pre">$this-&gt;Html-&gt;loadConfig('html5_tags');</span></tt>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="creation-d-un-chemin-de-navigation-avec-le-helper-html">
+<h2>Création d’un chemin de navigation avec le Helper Html<a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#creation-d-un-chemin-de-navigation-avec-le-helper-html" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="method">
+<dt id="HtmlHelper::getCrumbs">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">getCrumbs</tt><big>(</big><em>string $separator = '&amp;raquo;'</em>, <em>string|array|bool $startText = false</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::getCrumbs" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>CakePHP inclut la possibilité de créer automatiquement un chemin de
+navigation (fil d’Ariane) dans votre application. Pour mettre cela en
+service, ajouter cela dans votre template de layout:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">getCrumbs</span><span class="p">(</span><span class="s1">' &gt; '</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>L’option <tt class="docutils literal"><span class="pre">$startText</span></tt> peut aussi accepter un tableau. Cela donne plus de
+contrôle à travers le premier lien généré:</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">getCrumbs</span><span class="p">(</span><span class="s1">' &gt; '</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s1">'home.png'</span><span class="p">),</span>
+    <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'pages'</span><span class="p">,</span> <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'display'</span><span class="p">,</span> <span class="s1">'home'</span><span class="p">),</span>
+    <span class="s1">'escape'</span> <span class="o">=&gt;</span> <span class="k">false</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Une clé qui n’est pas <tt class="docutils literal"><span class="pre">text</span></tt> ou <tt class="docutils literal"><span class="pre">url</span></tt> sera passée à
+<a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::link" title="HtmlHelper::link"><tt class="xref php php-meth docutils literal"><span class="pre">link()</span></tt></a> comme paramètre <tt class="docutils literal"><span class="pre">$options</span></tt>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.1: </span>Le paramètre <tt class="docutils literal"><span class="pre">$startText</span></tt> accepte maintenant un tableau.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::addCrumb">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">addCrumb</tt><big>(</big><em>string $name</em>, <em>string $link = null</em>, <em>mixed $options = null</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::addCrumb" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Maintenant, dans votre vue vous allez devoir ajouter ce qui suit
+pour démarrer le fil d’Ariane sur chacune de vos pages.</p>
+<div class="highlight-phpinline"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">addCrumb</span><span class="p">(</span><span class="s1">'Users'</span><span class="p">,</span> <span class="s1">'/users'</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">addCrumb</span><span class="p">(</span><span class="s1">'Add User'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'users'</span><span class="p">,</span> <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'add'</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Ceci ajoutera la sortie “<strong>Home &gt; Users &gt; Add User</strong>” dans votre layout
+où le fil d’Ariane a été ajouté.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="HtmlHelper::getCrumbList">
+<tt class="descclassname">HtmlHelper::</tt><tt class="descname">getCrumbList</tt><big>(</big><em>array $options = array()</em>, <em>mixed $startText</em><big>)</big><a class="headerlink" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::getCrumbList" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$options</strong> (<em>array</em>) – Un tableau d’ <a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices/glossary.html#term-attributs-html"><em class="xref std std-term">attributs HTML</em></a> pour les
+elements contenant <tt class="docutils literal"><span class="pre">&lt;ul&gt;</span></tt>. Peut aussi contenir les options
+‘separator’, ‘firstClass’, ‘lastClass’ et ‘escape’.</li>
+<li><strong>$startText</strong> (<em>string|array</em>) – Le texte ou l’elément qui précède ul.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Retourne le fil d’Ariane comme une liste (x)html.</p>
+<p>Cette méthode utilise <a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::tag" title="HtmlHelper::tag"><tt class="xref php php-meth docutils literal"><span class="pre">HtmlHelper::tag()</span></tt></a> pour générer la
+liste et ces éléments. Fonctionne de la même manière
+que <a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::getCrumbs" title="HtmlHelper::getCrumbs"><tt class="xref php php-meth docutils literal"><span class="pre">getCrumbs()</span></tt></a>, il utilise toutes les options
+que chacun des fils a ajouté. Vous pouvez utiliser le paramètre
+<tt class="docutils literal"><span class="pre">$startText</span></tt> pour fournir le premier lien de fil. C’est utile quand vous
+voulez inclure un lien racine. Cette option fonctionne de la même façon que
+l’option <tt class="docutils literal"><span class="pre">$startText</span></tt> pour <a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#HtmlHelper::getCrumbs" title="HtmlHelper::getCrumbs"><tt class="xref php php-meth docutils literal"><span class="pre">getCrumbs()</span></tt></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.1: </span>Le paramètre <tt class="docutils literal"><span class="pre">$startText</span></tt> a été ajouté.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.3: </span>Les options ‘separator’, ‘firstClass’ et ‘lastClass’ ont été ajoutées.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Modifié dans la version 2.5: </span>L’option ‘escape’ a été ajoutée.</p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+		</div>
+	</div>
+
+	<div class="sidebar columns three pull-nine">
+<div id="sidebar-navigation" class="hide-on-phones">
+	<h2 class="hide-on-desktops">Table of Contents</h2>
+	<ul class="current current current">
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/index.html">Bienvenue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/getting-started.html">Pour Commencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/getting-started.html#tutoriel-d-un-blog">Tutoriel d’un Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/getting-started.html#blog-tutoriel-ajouter-la-logique">Blog Tutoriel - Ajouter la logique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/cakephp-overview.html">Débuter avec CakePHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/controllers.html">Controllers (Contrôleurs)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/views.html">Views (Vues)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/views/themes.html">Thèmes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/views/media-view.html">Vues Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/views/json-and-xml-views.html">Vues JSON et XML</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/views/helpers.html">Helpers (Assistants)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/cache.html">CacheHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/form.html">FormHelper</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">HTMLHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/js.html">JSHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/number.html">NumberHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/paginator.html">Paginator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/rss.html">RSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/session.html">SessionHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/text.html">TextHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/time.html">TimeHelper</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/models.html">Models (Modèles)</a></li>
+<li class="toctree-l1 current current"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries.html">Librairies du Coeur</a><ul class="current current">
+<li class="toctree-l2 current"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/toc-general-purpose.html">Usage Général</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/global-constants-and-functions.html">Constantes globales et Fonctions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-utility-libraries/app.html">Classe App</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/events.html">Événements système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/collections.html">Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/toc-behaviors.html">Behaviors (Comportements)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/toc-components.html">Components (Composants)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/toc-helpers.html">Helpers (Assistants)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/cache.html">CacheHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/form.html">FormHelper</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">HTMLHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/js.html">JSHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/number.html">NumberHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/paginator.html">Paginator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/rss.html">RSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/session.html">SessionHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/text.html">TextHelper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/time.html">TimeHelper</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/toc-utilities.html">Utilitaires</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/console-and-shells.html">Console et Shells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/development.html">Développement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/deployment.html">Déploiement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/tutorials-and-examples.html">Tutoriels et exemples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/contributing.html">Contribuer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.cakephp.org/2.0/fr/appendices.html">Annexes</a></li>
+</ul>
+
+</div>
+
+<div class="page-contents">
+	<h3>Page contents</h3>
+	<ul>
+<li><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#">HTMLHelper</a><ul>
+<li><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#insertion-d-elements-correctement-formates">Insertion d’éléments correctement formatés</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#changer-la-restitution-des-balises-avec-le-helper-html">Changer la restitution des balises avec le Helper Html</a></li>
+<li><a class="reference internal" href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/html.html#creation-d-un-chemin-de-navigation-avec-le-helper-html">Création d’un chemin de navigation avec le Helper Html</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+	</div>
+
+</div>
+
+<div class="content row">
+	<ul class="related-pages inline">
+	<li>
+		<a href="http://book.cakephp.org/2.0/fr/genindex.html" title="Index général" accesskey="I">index</a>
+	</li>
+	<li>
+		<a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/js.html" title="JSHelper" accesskey="N">suivant</a>
+	</li>
+	<li>
+		<a href="http://book.cakephp.org/2.0/fr/core-libraries/helpers/form.html" title="FormHelper" accesskey="P">précédent</a>
+	</li>
+	</ul>
+</div>
+
+	<div class="footer-push"> </div>
+</div>
+
+
+
+
+
+
+<div class="footer">
+	<div class="row">
+		<div class="columns six offset-by-three contribute">
+			<strong>Found an issue?</strong>
+			Submit a correction on <a href="https://github.com/cakephp/docs">GitHub</a><br>
+			<a href="http://book.cakephp.org/2.0/en/contributing/documentation.html">[ documentation on how to contribute ]</a>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="columns nine offset-by-three copyright">
+					© Copyright 2014, Cake Software Foundation, Inc.
+				Mis à jour le Dec 01, 2014.
+				Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+		</div>
+	</div>
+</div>
+
+<div id="nav-modal" class="reveal-modal"> </div>
+<div id="inline-search-results"></div>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-743287-3']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+  
+</body></html>

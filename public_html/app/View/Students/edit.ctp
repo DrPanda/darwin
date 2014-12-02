@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('session_id');
-		echo $this->Form->input('picture');
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('comment');
@@ -19,10 +18,6 @@
 	<ul>
 
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Student.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Student.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Students'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Unit Sessions'), array('controller' => 'unit_sessions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Unit Session'), array('controller' => 'unit_sessions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Student Exercices'), array('controller' => 'student_exercices', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student Exercice'), array('controller' => 'student_exercices', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
