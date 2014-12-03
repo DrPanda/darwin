@@ -37,6 +37,8 @@ class UnitSessionsController extends AppController {
 		if (!$this->UnitSession->exists($id)) {
 			throw new NotFoundException(__('Invalid unit session'));
 		}
+		// $this->UnitSession->recursive = 0;
+		$this->set('unitSessions', $this->Paginator->paginate());
 		$options = array('conditions' => array('UnitSession.' . $this->UnitSession->primaryKey => $id));
 		$this->set('unitSession', $this->UnitSession->find('first', $options));
 	}
@@ -57,6 +59,8 @@ class UnitSessionsController extends AppController {
 				{
 					$extension = strtolower(pathinfo($this->request->data['UnitSession']['csv_file']['name'], PATHINFO_EXTENSION));
 					$filename = $this->request->data['UnitSession']['csv_file']['tmp_name'];
+					var_dump($this->request->data['UnitSession']['csv_file']);
+					die();
 					if(
 						!empty($filename) &&
 						in_array($extension, array('csv'))
@@ -210,5 +214,65 @@ class UnitSessionsController extends AppController {
 			$this->Session->setFlash(__('The unit session could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+// 	public $useTable = 'Student';
+//  	var $components = array('Export.Export', 'comment');
+
+// 	public function export() {
+// 		$this->Student->contain('Comment');
+//     	$data = $this->Student->find('all');
+//     	$this->Export->exportCsv($data);
+// }
+	public function export($id = NULL) {
+		if (!$this->UnitSession->exists($id)) {
+			throw new NotFoundException(__('Invalid unit session'));
+		}
+		$options = array('conditions' => array('UnitSession.' . $this->UnitSession->primaryKey => $id));
+		$this->set('unitSession', $this->UnitSession->find('first', $options));
+		if ($this->Auth->user()['role'] == "assets") {
+			$this->redirect(array('controller' => 'UnitSessions', 'action' => 'index'));
+		}
+		$this->loadModel('UnitSession');
+		$filename = WWW_ROOT . 'files' . DS . 'csvs' . DS . $id . ".csv";
+		// $filename = '../webroot/files/csvs/' . $id . '.csv';
+		var_dump($id);
+		// die();
+		$csv_line = array();
+		if(!empty($filename))
+					{
+						$file = fopen($filename, 'r');
+						$csv_line = fgetcsv($file, 0, '\r');
+						$tmp = false;
+
+						// $options = array('conditions' => array('Student.' . $this->Student->comment => $comment));
+						// $student = $this->Student->find('first', $options);
+						$this->loadModel('Student');
+						// $this->Student->create();
+						// $this->Student->save($data);
+					//	var_dump($this->Student->findAllById($student['Student']['id']));
+						// return $this->redirect(array('action' => 'index'));
+						// die();
+						foreach ($csv_line as $value) {
+							if ($tmp === true)
+							{
+								$csv_field = explode(";", $value);
+								// $data = array(
+								// 	'Student' => array(
+								// 		'session_id' => $this->UnitSession->id,
+								// 		'id' => $csv_field[20],
+								// 		'first_name' => $csv_field[19],
+								// 		'last_name' => $csv_field[31]
+								// 	)
+								// );
+								$csv_line[50] = $this->Student['id']['comment'];
+								// $this->Student->create();
+								// $this->Student->save($data);
+							}
+							$tmp = true;
+						}
+						fclose($file);
+		return $this->redirect(array('action' => 'index'));
+		}
 	}
 }

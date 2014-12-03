@@ -41,7 +41,6 @@
 		<li><?php echo $this->Html->link(__('List Student Exercices'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student Exercice'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Exercices'), array('controller' => 'exercices', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Exercice'), array('controller' => 'exercices', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>

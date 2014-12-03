@@ -77,7 +77,7 @@ class StudentsController extends AppController {
  */
 
 	public function edit_exercice() {
-		$id = $this->request->data['StudentExercices']['id'];
+		$id = $this->request->data['StudentExercice']['id'];
 		$this->loadModel('StudentExercice');
 		if (!$this->StudentExercice->exists($id)) {
 			throw new NotFoundException(__('Invalid student exercice'));

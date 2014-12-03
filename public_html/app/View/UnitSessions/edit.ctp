@@ -20,6 +20,5 @@
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('UnitSession.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('UnitSession.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Unit Sessions'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

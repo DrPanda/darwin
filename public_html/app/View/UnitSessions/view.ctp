@@ -2,6 +2,11 @@
 <div class="unitSessions view">
 <h2><?php echo __('Session') . " - " . h($unitSession['UnitSession']['name']); ?></h2>
 	<dl>
+		<!-- <?php echo $this->Html->link(__('Export', true), array('action' => 'export')); ?> -->
+		<dt> <?php echo __('Export') ?> </dt>
+		<dd class="actions">
+			<?php echo $this->Html->link(__('Export'), array('controller' => 'unitSessions', 'action' => 'export', $unitSession['UnitSession']['id'])); ?>
+		</dd>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($unitSession['UnitSession']['id']); ?>
@@ -27,12 +32,10 @@
 		<li><?php echo $this->Html->link(__('List Unit Sessions'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Unit Session'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <?php } ?>
 <div class="related">
-	<h3><?php echo __('Related Students'); ?></h3>
 	<?php if (!empty($unitSession['Student'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -77,11 +80,4 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-	<?php if ($authUser["role"] == "admin") { ?>
-		<div class="actions">
-			<ul>
-				<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
-			</ul>
-		</div>
-	<?php } ?>
 </div>

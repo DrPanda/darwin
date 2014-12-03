@@ -120,7 +120,7 @@
       </div>
       <div class="modal-body">
         <?php echo $this->Form->create('StudentExercice', array(
-    'url' => array('controller' => 'Students', 'action' => 'edit_exercice'))); ?>
+    'url' => array('controller' => 'students', 'action' => 'edit_exercice'))); ?>
 		<fieldset>
 			<?php
 				echo $this->Form->hidden('id');
